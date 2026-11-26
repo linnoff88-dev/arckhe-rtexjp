@@ -8,16 +8,16 @@
 <meta name="theme-color" content="#07111f">
 <meta property="og:title" content="rtexjp — reels ilustrados 9:16">
 <meta property="og:description" content="Del roteiro.json al reel vertical listo, todo local y gratis.">
-<meta property="og:image" content="https://inematds.github.io/rtexjp/capa/capa.png">
+<meta property="og:image" content="https://linnoff88-dev.github.io/arckhe-/capa/capa.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎬%3C/text%3E%3C/svg%3E">
-<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/rtexjp/guia/">
-<link rel="alternate" hreflang="en" href="https://inematds.github.io/rtexjp/guia/en/">
-<link rel="alternate" hreflang="es" href="https://inematds.github.io/rtexjp/guia/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://linnoff88-dev.github.io/arckhe-/guia/">
+<link rel="alternate" hreflang="en" href="https://linnoff88-dev.github.io/arckhe-/guia/en/">
+<link rel="alternate" hreflang="es" href="https://linnoff88-dev.github.io/arckhe-/guia/es/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  /* Paleta azul marino de rtexjp (inema-design DECISOES.md, D19); amarillo #FACC15 = único color cálido. Estructura = estándar INEMA. */
+  /* Paleta azul marino de rtexjp (ARCKHÉ-design DECISOES.md, D19); amarillo #FACC15 = único color cálido. Estructura = estándar ARCKHÉ. */
   :root{
     --bg:#07111f; --bg2:#0b1a30; --card:#0f213b; --line:#1f3352;
     --txt:#e6edf7; --mut:#9fb0c8; --amb:#93c5fd; --amb2:#7aa7e0; --amb-ink:#07111f; --amb-rgb:147,197,253;
@@ -48,8 +48,8 @@
   nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
   nav .brand .emoji{font-size:1.25rem}
   nav .sep{color:var(--mut);opacity:.45}
-  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
-  nav .inema:hover{filter:brightness(1.15)}
+  nav .ARCKHÉ{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .ARCKHÉ:hover{filter:brightness(1.15)}
   nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
   nav .pro:hover{filter:brightness(1.15)}
   nav .clubpro{display:inline-flex;align-items:center;gap:6px}
@@ -130,9 +130,9 @@
   <a class="brand" href="#top"><span class="emoji">🎬</span> rtexjp</a>
   <span class="sep">|</span>
   <span class="clubpro">
-    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <a class="ARCKHÉ" href="https://ARCKHÉ AI" target="_blank" rel="noopener">ARCKHÉ AI</a>
     <span class="sep">-</span>
-    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+    <a class="pro" href="https://ARCKHÉ.pro" target="_blank" rel="noopener">PRO</a>
   </span>
   <div class="links">
     <a class="sec" href="#oque">Qué es</a>
@@ -141,7 +141,7 @@
     <a class="sec" href="#exemplos">Ejemplos</a>
     <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
     <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
-    <a class="btn" href="https://github.com/inematds/rtexjp" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://github.com/linnoff88-dev/rtexjp" target="_blank" rel="noopener">GitHub</a>
   </div>
 </div></nav>
 
@@ -164,7 +164,7 @@
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">En resumen</span>
-  <p>rtexjp es un motor que monta vídeos cortos verticales (reels) ilustrados, en azul marino, a partir de un guion escrito en un archivo de texto (<code>roteiro.json</code>). Es el motor que Nei usa en los reels de INEMA, abierto a quien quiera estudiar o adaptarlo: sin grabarte y sin pagar por un servicio de avatares. Genera la voz, dibuja cada escena cuadro a cuadro, mezcla la música y comprueba por sí solo que el vídeo siga el formato. Necesitas un ordenador con tarjeta gráfica (GPU), Python, Node, ffmpeg y dos servidores locales: el de voz (inemavox) y el de imagen (flux2-klein).</p>
+  <p>rtexjp es un motor que monta vídeos cortos verticales (reels) ilustrados, en azul marino, a partir de un guion escrito en un archivo de texto (<code>roteiro.json</code>). Es el motor que Nei usa en los reels de ARCKHÉ, abierto a quien quiera estudiar o adaptarlo: sin grabarte y sin pagar por un servicio de avatares. Genera la voz, dibuja cada escena cuadro a cuadro, mezcla la música y comprueba por sí solo que el vídeo siga el formato. Necesitas un ordenador con tarjeta gráfica (GPU), Python, Node, ffmpeg y dos servidores locales: el de voz (ARCKHÉvox) y el de imagen (flux2-klein).</p>
   <p class="mut" style="font-size:.98rem">Viene configurado con la voz y el avatar de Nei. Para usar los tuyos, asigna las variables de entorno <code>RTEXJP_VOZ_REF</code> (grabación de referencia de la voz) y <code>RTEXJP_AVATAR_REF</code> (foto del avatar) a tus archivos, describe a tu personaje en <code>RTEXJP_AVATAR_DESC</code> (si no lo haces, las poses salen con la gorra, las gafas y la barba de Nei) y vuelve a generar las poses; no hace falta editar el código. Estos dos archivos no están incluidos en el repositorio (consulta <a href="#pre">Requisitos previos</a>).</p>
 </div></section>
 
@@ -175,7 +175,7 @@
   <figure class="wide"><img src="../assets/triptico-3.jpg" width="760" height="446" loading="lazy" alt="Tres fotogramas de los reels de ejemplo, uno al lado del otro: el gancho del grifo con candado (&quot;¿China cierra el grifo?&quot;), el gancho del iceberg (&quot;Pagas 200. Cuesta hasta 5.000.&quot;) y la tarjeta final con las opciones PAGA y SAI en amarillo"></figure>
   <div class="grid g3">
     <div class="card"><h3>🎨 Ilustrado, sin lip-sync</h3><p>Avatar ilustrado de Nei grande, abajo (≈ 43 % de la altura), en 11 poses vinculadas a la emoción de lo que dice (susto, duda, señala, explica, pulgar arriba…), un dibujo protagonista por escena y una mascota robot. Nadie tiene que grabar nada.</p></div>
-    <div class="card"><h3>🎙️ Voz de Nei, local</h3><p>Voz generada con TTS local (inemavox chatterbox), de 160–190 palabras por minuto; Whisper local marca el tiempo de cada palabra para los subtítulos y los disparadores de escena.</p></div>
+    <div class="card"><h3>🎙️ Voz de Nei, local</h3><p>Voz generada con TTS local (ARCKHÉvox chatterbox), de 160–190 palabras por minuto; Whisper local marca el tiempo de cada palabra para los subtítulos y los disparadores de escena.</p></div>
     <div class="card"><h3>✅ QA automático</h3><p>Mide la duración, el ritmo del habla, el volumen (−14 LUFS), los cambios visuales por minuto, la prueba antes de los 20 s, las opciones de la pregunta sembradas de antemano, la CTA sin promesa de entrega, la tarjeta final y el silencio antes de la máxima. Genera un <code>qa.md</code> y un <code>contact.jpg</code>.</p></div>
   </div>
 </div></section>
@@ -255,15 +255,15 @@
   <h2>Qué debe estar instalado en el ordenador</h2>
   <p class="sub">Todo funciona localmente. No se llama a ninguna API de pago. Las rutas se obtienen de variables de entorno, con los valores predeterminados del ordenador de Nei; si el tuyo es distinto, exporta las variables (tabla de abajo) y no hace falta cambiar el código.</p>
   <div class="grid g3">
-    <div class="card"><h3>Voz: inemavox + entorno chatterbox</h3><p>El proyecto <a href="https://github.com/inematds/inemavox" target="_blank" rel="noopener">inematds/inemavox</a> clonado en <code>~/projetos/inemavox</code> (el motor llama a su <code>tts_direct.py</code> y <code>whisper_daemon.py</code>). El TTS chatterbox y Whisper large-v3 funcionan en un entorno Python aparte (en el ordenador de Nei, el entorno conda <code>chatterbox</code> en <code>~/miniconda3/envs/chatterbox</code>); si el tuyo está en otro sitio, ajusta las variables de abajo. Si lo clonas en otra ubicación, exporta <code>RTEXJP_INEMAVOX</code> con la ruta. Whisper large-v3 ocupa unos 10 GB de la tarjeta gráfica (GPU NVIDIA), además de chatterbox. Probado en Linux.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/inemavox</span> ~/projetos/inemavox
-<span class="k">cd</span> ~/projetos/inemavox && <span class="k">python3 -m venv</span> venv
+    <div class="card"><h3>Voz: ARCKHÉvox + entorno chatterbox</h3><p>El proyecto <a href="https://github.com/linnoff88-dev/ARCKHÉvox" target="_blank" rel="noopener">linnoff88-dev/ARCKHÉvox</a> clonado en <code>~/projetos/ARCKHÉvox</code> (el motor llama a su <code>tts_direct.py</code> y <code>whisper_daemon.py</code>). El TTS chatterbox y Whisper large-v3 funcionan en un entorno Python aparte (en el ordenador de Nei, el entorno conda <code>chatterbox</code> en <code>~/miniconda3/envs/chatterbox</code>); si el tuyo está en otro sitio, ajusta las variables de abajo. Si lo clonas en otra ubicación, exporta <code>RTEXJP_ARCKHÉVOX</code> con la ruta. Whisper large-v3 ocupa unos 10 GB de la tarjeta gráfica (GPU NVIDIA), además de chatterbox. Probado en Linux.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/linnoff88-dev/ARCKHÉvox</span> ~/projetos/ARCKHÉvox
+<span class="k">cd</span> ~/projetos/ARCKHÉvox && <span class="k">python3 -m venv</span> venv
 <span class="k">./venv/bin/pip install</span> -r requirements.txt   <span class="c"># o rtexjp llama a venv/bin/python tts_direct.py</span>
-<span class="c"># chatterbox + faster-whisper en un entorno propio (consulta el README de inemavox)</span>
+<span class="c"># chatterbox + faster-whisper en un entorno propio (consulta el README de ARCKHÉvox)</span>
 <span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">/caminho/do/env/bin/python3</span>   <span class="c"># TTS</span>
 <span class="k">export</span> CS_WHISPER_PY=<span class="s">/caminho/do/env/bin/python3</span>       <span class="c"># Whisper</span>
 </pre></div>
-    <div class="card"><h3>Imagen: flux2-klein</h3><p>El servidor <a href="https://github.com/inematds/inemaimg" target="_blank" rel="noopener">inematds/inemaimg</a> con el modelo flux2-klein (ruta predeterminada <code>http://localhost:8000/generate</code>, o la dirección indicada en <code>RTEXJP_IMG_URL</code>), además de la foto de referencia del avatar (<code>RTEXJP_AVATAR_REF</code>). Solo hace falta para los pasos opcionales 4 y 5 (poses y dibujos de escena); las poses de Nei y la biblioteca de dibujos ya vienen preparadas.</p></div>
-    <div class="card"><h3>Node, ffmpeg, Python</h3><p>Node 18 o posterior, ffmpeg (incluye ffprobe) y Python 3 con Pillow y numpy.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/rtexjp</span>
+    <div class="card"><h3>Imagen: flux2-klein</h3><p>El servidor <a href="https://github.com/linnoff88-dev/ARCKHÉimg" target="_blank" rel="noopener">linnoff88-dev/ARCKHÉimg</a> con el modelo flux2-klein (ruta predeterminada <code>http://localhost:8000/generate</code>, o la dirección indicada en <code>RTEXJP_IMG_URL</code>), además de la foto de referencia del avatar (<code>RTEXJP_AVATAR_REF</code>). Solo hace falta para los pasos opcionales 4 y 5 (poses y dibujos de escena); las poses de Nei y la biblioteca de dibujos ya vienen preparadas.</p></div>
+    <div class="card"><h3>Node, ffmpeg, Python</h3><p>Node 18 o posterior, ffmpeg (incluye ffprobe) y Python 3 con Pillow y numpy.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/linnoff88-dev/rtexjp</span>
 <span class="k">cd</span> rtexjp
 <span class="k">npm i</span>
 <span class="k">npx playwright install</span> chromium
@@ -271,17 +271,17 @@
   </div>
   <h3 style="margin:34px 0 12px">Rutas y variables de entorno</h3>
   <table class="qa env">
-    <tr><td><code>RTEXJP_INEMAVOX</code> · carpeta de inemavox (TTS + Whisper)</td><td>~/projetos/inemavox</td></tr>
+    <tr><td><code>RTEXJP_ARCKHÉVOX</code> · carpeta de ARCKHÉvox (TTS + Whisper)</td><td>~/projetos/ARCKHÉvox</td></tr>
     <tr><td><code>RTEXJP_VOZ_REF</code> · grabación de referencia de la voz (.wav)</td><td>~/projetos/timesmkt3/media/voice-refs/nei.wav</td></tr>
     <tr><td><code>RTEXJP_IMG_URL</code> · servidor de imágenes flux2-klein</td><td>http://localhost:8000/generate</td></tr>
-    <tr><td><code>RTEXJP_AVATAR_REF</code> · foto de referencia del avatar</td><td>~/projetos/inema-referencias/nei-avatar.jpg</td></tr>
+    <tr><td><code>RTEXJP_AVATAR_REF</code> · foto de referencia del avatar</td><td>~/projetos/ARCKHÉ-referencias/nei-avatar.jpg</td></tr>
     <tr><td><code>RTEXJP_AVATAR_DESC</code> · rasgos y ropa del personaje en la solicitud de imagen (en inglés)</td><td>gorra negra, gafas, barba canosa, camiseta azul acero (Nei)</td></tr>
     <tr><td><code>RTEXJP_TRILHA</code> · base musical de la mezcla</td><td>motor/assets/trilha.mp3</td></tr>
     <tr><td><code>CS_WHISPER_PY</code> · Python del entorno con faster-whisper (servidor de Whisper y plan B)</td><td>~/miniconda3/envs/chatterbox/bin/python3</td></tr>
-    <tr><td><code>CHATTERBOX_PYTHON</code> · Python del entorno chatterbox, requerido por <code>tts_direct.py</code> de inemavox</td><td>el del entorno chatterbox</td></tr>
+    <tr><td><code>CHATTERBOX_PYTHON</code> · Python del entorno chatterbox, requerido por <code>tts_direct.py</code> de ARCKHÉvox</td><td>el del entorno chatterbox</td></tr>
   </table>
 <pre><span class="c"># ejemplo: todo en otras rutas, sin editar el código</span>
-<span class="k">export</span> RTEXJP_INEMAVOX=<span class="s">~/inemavox</span>
+<span class="k">export</span> RTEXJP_ARCKHÉVOX=<span class="s">~/ARCKHÉvox</span>
 <span class="k">export</span> RTEXJP_VOZ_REF=<span class="s">~/minha-voz.wav</span>
 <span class="k">export</span> RTEXJP_AVATAR_REF=<span class="s">~/minha-foto.jpg</span>
 <span class="k">export</span> RTEXJP_AVATAR_DESC=<span class="s">"same face, short brown hair, no glasses. She wears a plain navy blazer"</span>
@@ -331,7 +331,7 @@
 
   <div class="step"><div class="b">6</div><div>
     <h3>Voz por bloque y tiempo de cada palabra</h3>
-    <p>Genera un audio por bloque con la voz de Nei; Whisper marca cada palabra en <code>build/tempos.json</code>. Pasa los nombres de los bloques para rehacer solo esos. Whisper funciona como servidor de inemavox (<code>whisper_daemon.py</code>, con el Python de <code>CS_WHISPER_PY</code>); si no se inicia, el motor usa <code>transcrever_v1.py</code> de inemavox con ese mismo Python. El registro está en <code>~/.cache/whisper_daemon.log</code>.</p>
+    <p>Genera un audio por bloque con la voz de Nei; Whisper marca cada palabra en <code>build/tempos.json</code>. Pasa los nombres de los bloques para rehacer solo esos. Whisper funciona como servidor de ARCKHÉvox (<code>whisper_daemon.py</code>, con el Python de <code>CS_WHISPER_PY</code>); si no se inicia, el motor usa <code>transcrever_v1.py</code> de ARCKHÉvox con ese mismo Python. El registro está en <code>~/.cache/whisper_daemon.log</code>.</p>
 <pre><span class="k">python3 rtexjp.py voz</span> edicoes/minha-edicao            <span class="c"># todos los bloques</span>
 <span class="k">python3 rtexjp.py voz</span> edicoes/minha-edicao p2 ressalva  <span class="c"># solo estos</span></pre>
   </div></div>
@@ -497,10 +497,10 @@
 
 <footer>
   <div class="wrap">
-    <div class="pill">Python</div><div class="pill">Playwright</div><div class="pill">ffmpeg</div><div class="pill">inemavox chatterbox</div><div class="pill">Whisper large-v3</div><div class="pill">flux2-klein</div>
+    <div class="pill">Python</div><div class="pill">Playwright</div><div class="pill">ffmpeg</div><div class="pill">ARCKHÉvox chatterbox</div><div class="pill">Whisper large-v3</div><div class="pill">flux2-klein</div>
     <p style="margin-top:18px">rtexjp · motor de reels ilustrados 9:16 ·
-      <a href="https://github.com/inematds/rtexjp">inematds/rtexjp</a> ·
-      <a href="https://inema.club">INEMA.CLUB</a></p>
+      <a href="https://github.com/linnoff88-dev/rtexjp">linnoff88-dev/rtexjp</a> ·
+      <a href="https://ARCKHÉ AI">ARCKHÉ AI</a></p>
   </div>
 </footer>
 

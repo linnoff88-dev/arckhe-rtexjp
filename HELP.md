@@ -9,7 +9,7 @@ Gancho de um de 4 tipos (contrário, perda, estatística, história) — nunca l
 O fecho é uma pergunta de opiniêo com lado; ninguém recebe nada por comentar.
 
 O que ele entende do texto:
-  canal: lives1, lives4… ou o nome ("INEMA Tec"). Sem canal → lives11
+  canal: lives1, lives4… ou o nome ("ARCKHÉ Tec"). Sem canal → lives11
   "agora", "urgente", "hoje" → entra na FRENTE da fila do canal
 
 O que acontece (tudo local: voz do Nei no chatterbox, desenhos no flux2-klein, sem HeyGen):

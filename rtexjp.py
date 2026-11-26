@@ -4,7 +4,7 @@
 Uso:  python3 rtexjp.py <passo> <pasta-da-edicao>
 Passos (em ordem):  checar · voz · cena · render · mix · qa · tudo
   checar  valida o roteiro.json pelas regras do formato (sem gosto)
-  voz     um WAV por bloco (inemavox chatterbox, voz do Nei), apara, acelera até 1,15x, junta com respiros
+  voz     um WAV por bloco (ARCKHÉvox chatterbox, voz do Nei), apara, acelera até 1,15x, junta com respiros
           e o silêncio antes da máxima; Whisper local dá o tempo de cada palavra -> build/tempos.json
   cena    roteiro + tempos -> build/cena.json (o que o palco desenha)
   render  palco.html quadro a quadro (Playwright) -> build/video.mp4 (mudo)
@@ -12,10 +12,10 @@ Passos (em ordem):  checar · voz · cena · render · mix · qa · tudo
   qa      medir.py -> build/qa.json + contact.jpg
 
 Caminhos (variáveis de ambiente, com o padrêo da máquina do Nei):
-  RTEXJP_INEMAVOX  pasta do inemavox (TTS chatterbox + Whisper)   ~/projetos/inemavox
+  RTEXJP_ARCKHÉVOX  pasta do ARCKHÉvox (TTS chatterbox + Whisper)   ~/projetos/ARCKHÉvox
   RTEXJP_VOZ_REF   gravaçêo de referência da voz (wav)            ~/projetos/timesmkt3/media/voice-refs/nei.wav
   RTEXJP_IMG_URL   servidor de imagem flux2-klein (motor/gerar_*) http://localhost:8000/generate
-  RTEXJP_AVATAR_REF foto de referência do avatar (gerar_avatar)    ~/projetos/inema-referencias/nei-avatar.jpg
+  RTEXJP_AVATAR_REF foto de referência do avatar (gerar_avatar)    ~/projetos/ARCKHÉ-referencias/nei-avatar.jpg
   RTEXJP_AVATAR_DESC traços e roupa do personagem no prompt (gerar_avatar)   boné preto, óculos, barba grisalha, camiseta azul-aço
   RTEXJP_TRILHA    cama musical do mix                            motor/assets/trilha.mp3
 """
@@ -24,8 +24,8 @@ from pathlib import Path
 
 R = Path(__file__).resolve().parent
 sys.path.insert(0, str(R / "motor"))
-INEMAVOX = Path(os.environ.get("RTEXJP_INEMAVOX", os.environ.get("CS_INEMAVOX", Path.home() / "projetos/inemavox"))).expanduser()
-os.environ.setdefault("CS_INEMAVOX", str(INEMAVOX))   # o motor/whisper.py lê esta
+ARCKHÉVOX = Path(os.environ.get("RTEXJP_ARCKHÉVOX", os.environ.get("CS_ARCKHÉVOX", Path.home() / "projetos/ARCKHÉvox"))).expanduser()
+os.environ.setdefault("CS_ARCKHÉVOX", str(ARCKHÉVOX))   # o motor/whisper.py lê esta
 TRILHA = Path(os.environ.get("RTEXJP_TRILHA", R / "motor/assets/trilha.mp3")).expanduser()
 VOZ_REF = Path(os.environ.get("RTEXJP_VOZ_REF", Path.home() / "projetos/timesmkt3/media/voice-refs/nei.wav")).expanduser()
 ALVO_WPM = 178
@@ -261,8 +261,8 @@ def voz(pasta, so=None):
         if bruto.exists() and not (so and b["id"] in so):
             pass  # reaproveita o TTS já gerado; só refaz o tratamento
         else:
-          sh(INEMAVOX / "venv/bin/python", "tts_direct.py", "--text", b.get("fala_tts", b["fala"]), "--lang", "pt", "--engine", "chatterbox",
-           "--ref", VOZ_REF, "--outdir", out, "--exaggeration", "0.6", "--cfg-weight", "0.6", cwd=INEMAVOX, stdout=subprocess.DEVNULL)
+          sh(ARCKHÉVOX / "venv/bin/python", "tts_direct.py", "--text", b.get("fala_tts", b["fala"]), "--lang", "pt", "--engine", "chatterbox",
+           "--ref", VOZ_REF, "--outdir", out, "--exaggeration", "0.6", "--cfg-weight", "0.6", cwd=ARCKHÉVOX, stdout=subprocess.DEVNULL)
           (out / "generated.wav").rename(bruto)
         if _volume(bruto) < -50:
             raise SystemExit(f"voz muda no bloco {b['id']} (chatterbox gravou silêncio)")

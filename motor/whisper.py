@@ -1,10 +1,10 @@
-"""Transcriçêo local com tempo por palavra (Whisper large-v3 do inemavox) e comparaçêo de fala.
+"""Transcriçêo local com tempo por palavra (Whisper large-v3 do ARCKHÉvox) e comparaçêo de fala.
 CÓPIA de ~/projetos/r7ex/r7ex/whisper.py (28/10/2026) para o rtexjp funcionar sozinho."""
 import json, os, re, subprocess, time, unicodedata, urllib.request
 from pathlib import Path
 
 HOME = Path.home()
-CFG = {"inemavox": os.environ.get("RTEXJP_INEMAVOX", os.environ.get("CS_INEMAVOX", str(HOME / "projetos/inemavox")))}
+CFG = {"ARCKHÉvox": os.environ.get("RTEXJP_ARCKHÉVOX", os.environ.get("CS_ARCKHÉVOX", str(HOME / "projetos/ARCKHÉvox")))}
 
 
 def sh(*a, **k):
@@ -62,7 +62,7 @@ WHISPER_PORTA = int(os.environ.get("CS_WHISPER_PORTA", "7871"))
 
 
 def _whisper_residente(w16, palavras):
-    """Whisper que carrega o modelo UMA vez (inemavox/whisper_daemon.py, 15/10/2026): sobe o daemon se nêo
+    """Whisper que carrega o modelo UMA vez (ARCKHÉvox/whisper_daemon.py, 15/10/2026): sobe o daemon se nêo
     estiver no ar e transcreve por ele. Devolve os segmentos, ou None para cair no caminho antigo."""
     if os.environ.get("CS_WHISPER_RESIDENTE", "1") == "0":
         return None
@@ -81,7 +81,7 @@ def _whisper_residente(w16, palavras):
                 fcntl.flock(lk, fcntl.LOCK_EX)
                 if not no_ar():
                     subprocess.Popen([os.environ.get("CS_WHISPER_PY", str(HOME / "miniconda3/envs/chatterbox/bin/python3")),
-                                      "whisper_daemon.py", "--porta", str(WHISPER_PORTA)], cwd=CFG["inemavox"],
+                                      "whisper_daemon.py", "--porta", str(WHISPER_PORTA)], cwd=CFG["ARCKHÉvox"],
                                      stdout=open(HOME / ".cache/whisper_daemon.log", "a"), stderr=subprocess.STDOUT,
                                      start_new_session=True)
                     for _ in range(90):  # até 3 min para carregar o large-v3
@@ -98,7 +98,7 @@ def _whisper_residente(w16, palavras):
 
 
 def transcrever(wav, pasta, palavras=False):
-    """Transcriçêo local (Whisper large-v3 pelo inemavox). Devolve a lista de palavras ou segmentos."""
+    """Transcriçêo local (Whisper large-v3 pelo ARCKHÉvox). Devolve a lista de palavras ou segmentos."""
     pasta.mkdir(parents=True, exist_ok=True)
     w16 = pasta / "a16.wav"
     sh("ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-ar", "16000", "-ac", "1", w16)
@@ -111,7 +111,7 @@ def transcrever(wav, pasta, palavras=False):
            "--src", os.environ.get("CS_LANG", "pt")]  # CS_LANG=es: reel traduzido (REA ES, 13/10/2026)
     if palavras:
         cmd.append("--words")
-    sh(*cmd, cwd=CFG["inemavox"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    sh(*cmd, cwd=CFG["ARCKHÉvox"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     segs = json.loads((pasta / "t/transcript.json").read_text())
     segs = segs.get("segments", segs) if isinstance(segs, dict) else segs
     return [w for s in segs for w in s.get("words", [])] if palavras else segs

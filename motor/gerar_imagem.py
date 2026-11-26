@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Imagem de cena no flux2-klein LOCAL (inemaimg :8000). Uso: python3 motor/gerar_imagem.py <saida.png> "<prompt>" [LxA] [seed]"""
+"""Imagem de cena no flux2-klein LOCAL (ARCKHÉimg :8000). Uso: python3 motor/gerar_imagem.py <saida.png> "<prompt>" [LxA] [seed]"""
 import base64, json, os, sys, urllib.request
 out, prompt = sys.argv[1], sys.argv[2]
 w, h = map(int, (sys.argv[3] if len(sys.argv) > 3 else "1152x784").split("x"))

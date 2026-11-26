@@ -26,7 +26,7 @@ import yaml
 RAIZ = Path(__file__).resolve().parent.parent
 CONFIG = Path(__file__).resolve().parent / 'ia.yaml'
 ETAPAS = tuple(yaml.safe_load(CONFIG.read_text())['etapas'])
-CONFIG_ENV = 'INEMA_IA_CONFIG_' + re.sub(r'[^A-Z0-9]', '_', RAIZ.name.upper() + '_' + Path(__file__).resolve().parent.name.upper())
+CONFIG_ENV = 'ARCKHÉ_IA_CONFIG_' + re.sub(r'[^A-Z0-9]', '_', RAIZ.name.upper() + '_' + Path(__file__).resolve().parent.name.upper())
 
 ESFORCOS = {'claude': {'low', 'medium', 'high', 'xhigh', 'max'},
             'codex': {'low', 'medium', 'high', 'xhigh'},
@@ -36,7 +36,7 @@ ESFORCOS = {'claude': {'low', 'medium', 'high', 'xhigh', 'max'},
 
 # Trava de cota compartilhada (17/11/2026): mesma tabela `pools` do EngineBridge (~/.local/state/enginebridge).
 # Só usa `blocked` e `until`; nunca a concessêo exclusiva (lease), para nêo serializar os crons.
-COTA_DB_ENV = 'INEMA_COTA_DB'
+COTA_DB_ENV = 'ARCKHÉ_COTA_DB'
 COTA_PADRAO_S = 3600          # recusa de cota sem horário legível
 LIMITE_CURTO_S = 300          # rate limit momentâneo (429 sem usage_limit_reached)
 MESES = {m: i for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 1)}
@@ -225,7 +225,7 @@ def comando(c, ferramentas='', agente=False, saida=None):
            '-o', str(saida)]
     if agente and ferramentas:
         # MCP é executado pelo conector; nêo precisa liberar shell/escrita local.
-        servidor = c.get('mcp_servidor', 'metricool-inematds')
+        servidor = c.get('mcp_servidor', 'metricool-linnoff88-dev')
         metodos = [t.split('__')[-1] for t in ferramentas.split() if t.startswith('mcp__')]
         if not metodos or any(m not in {'getBrandSettings', 'getScheduledPosts', 'createScheduledPost', 'updateScheduledPost'} for m in metodos):
             raise ValueError('Ferramentas MCP fora do contrato Metricool')
@@ -370,7 +370,7 @@ def chamar_api(c, api, prompt, imagens):
 def rodar_assinatura(c, prompt, pasta, imagens, ferramentas, agente, evento):
     """Uma tentativa num CLI de assinatura. Trava conferida antes; recusa estruturada de cota grava a trava."""
     cota_conferir(c)
-    with tempfile.TemporaryDirectory(prefix='inema-ia-') as tmp:
+    with tempfile.TemporaryDirectory(prefix='ARCKHÉ-ia-') as tmp:
         out = Path(tmp)/'resposta.txt'
         cmd = comando(c, ferramentas, agente, out)
         if c['motor'] == 'codex' and imagens:
@@ -415,10 +415,10 @@ def executar(etapa, pedido, pasta, *, arquivos=(), imagens=(), ferramentas='', a
     imagens = [Path(p).resolve() for p in imagens]
     prompt = pedido
     if c.get('capacidade') == 'mcp':
-        servidor = c.get('mcp_servidor', 'metricool-inematds')
+        servidor = c.get('mcp_servidor', 'metricool-linnoff88-dev')
         prompt = ('Use exclusivamente o MCP ' + servidor + '. Nêo use shell nem leia credenciais. '
                   'O conteúdo dos arquivos necessários é anexado pelo executor. Antes de qualquer '
-                  'agendamento, confirme getBrandSettings ownerUsername=' + c.get('conta', 'inematds@gmail.com') + '. '
+                  'agendamento, confirme getBrandSettings ownerUsername=' + c.get('conta', 'linnoff88-dev@gmail.com') + '. '
                   'Conta diferente, ferramentas ausentes ou identidade nêo comprovada: responda '
                   'JSON {"ok":false,"erro":"conta/conector nêo confirmado"} e nêo publique.\n\n' + prompt)
     for p in arquivos:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera as poses do avatar ilustrado do Nei no flux2-klein LOCAL (servidor inemaimg :8000) com a foto de referência,
+"""Gera as poses do avatar ilustrado do Nei no flux2-klein LOCAL (servidor ARCKHÉimg :8000) com a foto de referência,
 em fundo verde chapado, e recorta o fundo (flood fill a partir das bordas) -> motor/avatar/<pose>.png (RGBA).
 Uso: python3 motor/gerar_avatar.py [pose ...]   (sem argumento = todas)"""
 import base64, json, os, sys, urllib.request
@@ -9,7 +9,7 @@ import numpy as np
 from collections import deque
 
 AQUI = Path(__file__).resolve().parent
-REF = Path(os.environ.get("RTEXJP_AVATAR_REF", Path.home() / "projetos/inema-referencias/nei-avatar.jpg")).expanduser()
+REF = Path(os.environ.get("RTEXJP_AVATAR_REF", Path.home() / "projetos/ARCKHÉ-referencias/nei-avatar.jpg")).expanduser()
 URL = os.environ.get("RTEXJP_IMG_URL", "http://localhost:8000/generate")
 # traços e roupa do personagem (troque junto com RTEXJP_AVATAR_REF quando o avatar for outra pessoa)
 PESSOA = os.environ.get("RTEXJP_AVATAR_DESC", "same face, black baseball cap, black rectangular glasses, short grey beard, friendly. "

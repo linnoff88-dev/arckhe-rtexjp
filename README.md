@@ -6,21 +6,21 @@
 </div>
 
 
-[![rtexjp](capa/capa.png)](https://inematds.github.io/rtexjp/guia/)
+[![rtexjp](capa/capa.png)](https://linnoff88-dev.github.io/arckhe-/guia/)
 
 **ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
 ## O que êÂ©
 
-O rtexjp êÂ© um motor que monta vêÂ­deos curtos verticais (reels) ilustrados, em azul-marinho, a partir de um roteiro escrito num arquivo de texto (`roteiro.json`). êâ° o motor que o Nei usa nos reels do INEMA, aberto para quem quiser estudar ou adaptar: sem gravar a si mesmo e sem pagar serviêÂ§o de avatar. Ele gera a voz, desenha cada cena quadro a quadro, mistura a trilha e confere sozinho se o vêÂ­deo segue o formato. Precisa de um computador com placa de vêÂ­deo (GPU), Python, Node, ffmpeg e dois servidores locais: o de voz ([inemavox](https://github.com/inematds/inemavox)) e o de imagem ([inemaimg](https://github.com/inematds/inemaimg), flux2-klein).
+O rtexjp êÂ© um motor que monta vêÂ­deos curtos verticais (reels) ilustrados, em azul-marinho, a partir de um roteiro escrito num arquivo de texto (`roteiro.json`). êâ° o motor que o Nei usa nos reels do ARCKHÉ, aberto para quem quiser estudar ou adaptar: sem gravar a si mesmo e sem pagar serviêÂ§o de avatar. Ele gera a voz, desenha cada cena quadro a quadro, mistura a trilha e confere sozinho se o vêÂ­deo segue o formato. Precisa de um computador com placa de vêÂ­deo (GPU), Python, Node, ffmpeg e dois servidores locais: o de voz ([ARCKHÉvox](https://github.com/linnoff88-dev/ARCKHÉvox)) e o de imagem ([ARCKHÉimg](https://github.com/linnoff88-dev/ARCKHÉimg), flux2-klein).
 
 Vem configurado com a voz e o avatar do Nei. Para usar os seus, aponte as variêÂ¡veis de ambiente `RTEXJP_VOZ_REF` (gravaêÂ§êÂ£o de referêÂªncia da voz, `.wav`) e `RTEXJP_AVATAR_REF` (foto do avatar) para os seus arquivos, descreva o seu personagem em `RTEXJP_AVATAR_DESC` e gere as poses de novo (`python3 motor/gerar_avatar.py`); esses dois arquivos nêÂ£o vêÂªm no repositêÂ³rio. Veja **Caminhos e variêÂ¡veis de ambiente** abaixo.
 
 ## ê°Å¸ââ Guia de uso
 
-Guia completo (landing + passo a passo): **https://inematds.github.io/rtexjp/guia/** êÂ· 1êÂº vêÂ­deo (paleta antiga, roxa): https://www.youtube.com/watch?v=AZEZK1YgF98
+Guia completo (landing + passo a passo): **https://linnoff88-dev.github.io/arckhe-/guia/** êÂ· 1êÂº vêÂ­deo (paleta antiga, roxa): https://www.youtube.com/watch?v=AZEZK1YgF98
 
-**v1.3.0** (05/11/2026: `/rtexjp` no inemaccbot + produêÂ§êÂ£o sem sessêÂ£o) êÂ· motor local e grêÂ¡tis que transforma um `roteiro.json` num reel vertical 1080êâ1920 no **padrêÂ£o rtexjp**: um reel ilustrado em azul-marinho (com trocas para um papel azul-gelo), avatar ilustrado do Nei **grande** (ê¢â°Ë 43 % da altura, em 11 poses ligadas êÂ  emoêÂ§êÂ£o da fala, sem lip-sync), um **desenho-herêÂ³i** por cena, **print real** como prova, manchete Sora centrada, legenda karaokêÂª, mascote robêÂ´ e um êÂºnico CTA de **opiniêÂ£o** (uma pergunta com lado, respondida com uma palavra: "comenta DONO ou REFêâ°M").
+**v1.3.0** (05/11/2026: `/rtexjp` no ARCKHÉccbot + produêÂ§êÂ£o sem sessêÂ£o) êÂ· motor local e grêÂ¡tis que transforma um `roteiro.json` num reel vertical 1080êâ1920 no **padrêÂ£o rtexjp**: um reel ilustrado em azul-marinho (com trocas para um papel azul-gelo), avatar ilustrado do Nei **grande** (ê¢â°Ë 43 % da altura, em 11 poses ligadas êÂ  emoêÂ§êÂ£o da fala, sem lip-sync), um **desenho-herêÂ³i** por cena, **print real** como prova, manchete Sora centrada, legenda karaokêÂª, mascote robêÂ´ e um êÂºnico CTA de **opiniêÂ£o** (uma pergunta com lado, respondida com uma palavra: "comenta DONO ou REFêâ°M").
 
 ## O formato (padrêÂ£o rtexjp)
 
@@ -42,24 +42,24 @@ Visual (v1.2, ediêÂ§êÂµes com `"versao": "rtexjp/3"`): cada quadro tem
 
 EdiêÂ§êÂµes antigas (`rtexjp/2`) continuam com o visual da v1.1 (Anton êÂ  esquerda, avatar pequeno no canto).
 
-êÂudio: voz do Nei (inemavox chatterbox, 0,6/0,6, `atempo` ê¢â°Â¤ 1,15, pausas internas encurtadas), 160ê¢â¬â190 palavras/min, cama musical baixa com sidechain, master ê¢Ëâ14 LUFS.
+êÂudio: voz do Nei (ARCKHÉvox chatterbox, 0,6/0,6, `atempo` ê¢â°Â¤ 1,15, pausas internas encurtadas), 160ê¢â¬â190 palavras/min, cama musical baixa com sidechain, master ê¢Ëâ14 LUFS.
 
-> **ExceêÂ§êÂ£o ao kit INEMA:** avatar ilustrado e mascote robêÂ´ sêÂ£o decisêÂ£o de projeto (registrada em `inema-design/DECISOES.md`, D19). A paleta segue o kit em espêÂ­rito: marinho + azul, amarelo `#FACC15` como êÂºnica cor quente. A 1êÂª ediêÂ§êÂ£o (`2026-10-28-5-coisas`) êÂ© do formato antigo ê¢â¬â paleta roxa, gancho de lista e isca com entregêÂ¡vel ê¢â¬â e fica como estêÂ¡, porque jêÂ¡ foi publicada.
+> **ExceêÂ§êÂ£o ao kit ARCKHÉ:** avatar ilustrado e mascote robêÂ´ sêÂ£o decisêÂ£o de projeto (registrada em `ARCKHÉ-design/DECISOES.md`, D19). A paleta segue o kit em espêÂ­rito: marinho + azul, amarelo `#FACC15` como êÂºnica cor quente. A 1êÂª ediêÂ§êÂ£o (`2026-10-28-5-coisas`) êÂ© do formato antigo ê¢â¬â paleta roxa, gancho de lista e isca com entregêÂ¡vel ê¢â¬â e fica como estêÂ¡, porque jêÂ¡ foi publicada.
 
 ## Caminhos e variêÂ¡veis de ambiente
 
 | VariêÂ¡vel | Para quêÂª | PadrêÂ£o |
 |---|---|---|
-| `RTEXJP_INEMAVOX` | pasta do inemavox (TTS chatterbox no `venv` + Whisper large-v3) | `~/projetos/inemavox` |
+| `RTEXJP_ARCKHÉVOX` | pasta do ARCKHÉvox (TTS chatterbox no `venv` + Whisper large-v3) | `~/projetos/ARCKHÉvox` |
 | `RTEXJP_VOZ_REF` | gravaêÂ§êÂ£o de referêÂªncia da voz (`.wav`) | `~/projetos/timesmkt3/media/voice-refs/nei.wav` |
 | `RTEXJP_IMG_URL` | servidor de imagem flux2-klein (`motor/gerar_avatar.py`, `motor/gerar_imagem.py`) | `http://localhost:8000/generate` |
-| `RTEXJP_AVATAR_REF` | foto de referêÂªncia do avatar | `~/projetos/inema-referencias/nei-avatar.jpg` |
+| `RTEXJP_AVATAR_REF` | foto de referêÂªncia do avatar | `~/projetos/ARCKHÉ-referencias/nei-avatar.jpg` |
 | `RTEXJP_AVATAR_DESC` | traêÂ§os e roupa do personagem no pedido de imagem (em inglêÂªs); troque junto com a foto | bonêÂ© preto, êÂ³culos, barba grisalha, camiseta azul-aêÂ§o (o Nei) |
 | `RTEXJP_TRILHA` | cama musical do mix (para publicar, use uma mêÂºsica cuja licenêÂ§a vocêÂª conheêÂ§a) | `motor/assets/trilha.mp3` |
 | `CS_WHISPER_PY` | Python do ambiente com faster-whisper (servidor do Whisper e plano B) | `~/miniconda3/envs/chatterbox/bin/python3` |
-| `CHATTERBOX_PYTHON` | Python do ambiente do chatterbox, exigido pelo `tts_direct.py` do inemavox | o do ambiente `chatterbox` |
+| `CHATTERBOX_PYTHON` | Python do ambiente do chatterbox, exigido pelo `tts_direct.py` do ARCKHÉvox | o do ambiente `chatterbox` |
 
-Exemplo: `RTEXJP_VOZ_REF=~/minha-voz.wav RTEXJP_INEMAVOX=~/inemavox python3 rtexjp.py voz edicoes/minha-edicao`.
+Exemplo: `RTEXJP_VOZ_REF=~/minha-voz.wav RTEXJP_ARCKHÉVOX=~/ARCKHÉvox python3 rtexjp.py voz edicoes/minha-edicao`.
 
 ## Estrutura
 
@@ -72,7 +72,7 @@ motor/gerar_avatar.py  poses do avatar no flux2-klein local com a foto de refer�
 motor/capturar_prova.mjs print real da fonte para a prova (Playwright, tema escuro, 2x)
 motor/gerar_objeto.py  desenho-herêÂ³i no flux2-klein local -> motor/assets/objetos/<nome>.png + indice.json
 motor/gerar_imagem.py  imagem de cena no flux2-klein local
-motor/whisper.py       Whisper large-v3 local (inemavox) com tempo por palavra
+motor/whisper.py       Whisper large-v3 local (ARCKHÉvox) com tempo por palavra
 motor/avatar/*.png     11 poses: bracos, queixo, apontando, segurando, surpreso, mostrando, explica, olha, polegar, duvida, susto
 motor/assets/objetos/  biblioteca de desenhos-herêÂ³i (terminal_quebrado, mapa_pinos, lupa_arquivos, dominos, chave_donoê¢â¬Â¦) + indice.json
 motor/assets/          trilha.mp3 (cama), grao.png (textura), carro.png
@@ -104,7 +104,7 @@ edicoes/<id>/          roteiro.json êÂ· final.mp4 êÂ· contact.jpg ê
 
 Atalho: `python3 rtexjp.py tudo edicoes/<id>` roda 3 ê¢â â 7 ê¢â â 8 ê¢â â 10 ê¢â â 11 ê¢â â 12.
 
-**Pelo bot, sem sessêÂ£o nenhuma (05/11/2026): `/rtexjp <tema>` no inemaccbot** (prefixo `RJ`).
+**Pelo bot, sem sessêÂ£o nenhuma (05/11/2026): `/rtexjp <tema>` no ARCKHÉccbot** (prefixo `RJ`).
 
 | # | Passo | Comando / o que acontece | Quem |
 |---|---|---|---|
@@ -117,7 +117,7 @@ Teste da produêÂ§êÂ£o sem render nem Telegram: `python3 producao/teste
 
 ## Requisitos
 
-- inemavox (TTS chatterbox no `venv`, Whisper large-v3) e a gravaêÂ§êÂ£o de referêÂªncia da voz ê¢â¬â `RTEXJP_INEMAVOX`, `RTEXJP_VOZ_REF`
+- ARCKHÉvox (TTS chatterbox no `venv`, Whisper large-v3) e a gravaêÂ§êÂ£o de referêÂªncia da voz ê¢â¬â `RTEXJP_ARCKHÉVOX`, `RTEXJP_VOZ_REF`
 - servidor de imagem local flux2-klein e a foto do avatar ê¢â¬â `RTEXJP_IMG_URL`, `RTEXJP_AVATAR_REF`
 - Node + `npm i` (Playwright 1.64), ffmpeg, Python 3 com Pillow e numpy
 

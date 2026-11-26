@@ -1,18 +1,18 @@
 # rtexjp — 9:16 illustrated reels engine
 
-[![rtexjp](capa/capa.png)](https://inematds.github.io/rtexjp/guia/)
+[![rtexjp](capa/capa.png)](https://linnoff88-dev.github.io/arckhe-/guia/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
 ## What it is
 
-rtexjp is an engine that assembles short vertical videos (reels) illustrated in navy blue, from a script written in a text file (`roteiro.json`). It’s the engine Nei uses for INEMA reels, open to anyone who wants to study or adapt it: no need to record yourself or pay for an avatar service. It generates the voice, draws each scene frame by frame, mixes the soundtrack, and checks on its own whether the video follows the format. It requires a computer with a graphics card (GPU), Python, Node, ffmpeg, and two local servers: voice ([inemavox](https://github.com/inematds/inemavox)) and image ([inemaimg](https://github.com/inematds/inemaimg), flux2-klein).
+rtexjp is an engine that assembles short vertical videos (reels) illustrated in navy blue, from a script written in a text file (`roteiro.json`). It’s the engine Nei uses for ARCKHÉ reels, open to anyone who wants to study or adapt it: no need to record yourself or pay for an avatar service. It generates the voice, draws each scene frame by frame, mixes the soundtrack, and checks on its own whether the video follows the format. It requires a computer with a graphics card (GPU), Python, Node, ffmpeg, and two local servers: voice ([ARCKHÉvox](https://github.com/linnoff88-dev/ARCKHÉvox)) and image ([ARCKHÉimg](https://github.com/linnoff88-dev/ARCKHÉimg), flux2-klein).
 
 It comes configured with Nei’s voice and avatar. To use your own, point the environment variables `RTEXJP_VOZ_REF` (voice reference recording, `.wav`) and `RTEXJP_AVATAR_REF` (avatar photo) to your files, describe your character in `RTEXJP_AVATAR_DESC`, and regenerate the poses (`python3 motor/gerar_avatar.py`); these two files are not included in the repository. See **Paths and environment variables** below.
 
 ## 📖 User guide
 
-Complete guide (landing page + walkthrough): **https://inematds.github.io/rtexjp/guia/** · 1st video (old, purple palette): https://www.youtube.com/watch?v=AZEZK1YgF98
+Complete guide (landing page + walkthrough): **https://linnoff88-dev.github.io/arckhe-/guia/** · 1st video (old, purple palette): https://www.youtube.com/watch?v=AZEZK1YgF98
 
 **v1.2.0** · free, local engine that turns a `roteiro.json` into a vertical 1080×1920 reel in the **rtexjp style**: an illustrated reel in navy blue (with changes to ice blue paper), a **large** illustrated avatar of Nei (≈ 43% of the height, in 11 poses tied to the emotion of the speech, without lip-sync), one **hero illustration** per scene, a **real screenshot** as proof, centered Sora headline, karaoke captions, robot mascot, and a single **opinion** CTA (a question with a side to take, answered with one word: “comment DONO or REFÉM”).
 
@@ -36,24 +36,24 @@ Visuals (v1.2, edits with `"versao": "rtexjp/3"`): every frame has the same shel
 
 Older edits (`rtexjp/2`) retain the v1.1 visuals (Anton on the left, small avatar in the corner).
 
-Audio: Nei’s voice (inemavox chatterbox, 0.6/0.6, `atempo` ≤ 1.15, internal pauses shortened), 160–190 words/min, low music bed with sidechain, master −14 LUFS.
+Audio: Nei’s voice (ARCKHÉvox chatterbox, 0.6/0.6, `atempo` ≤ 1.15, internal pauses shortened), 160–190 words/min, low music bed with sidechain, master −14 LUFS.
 
-> **Exception to the INEMA kit:** the illustrated avatar and robot mascot are project decisions (recorded in `inema-design/DECISOES.md`, D19). The palette follows the spirit of the kit: navy + blue, yellow `#FACC15` as the only warm color. The 1st edit (`2026-10-28-5-coisas`) uses the old format — purple palette, list hook, and bait with a deliverable — and stays as is because it has already been published.
+> **Exception to the ARCKHÉ kit:** the illustrated avatar and robot mascot are project decisions (recorded in `ARCKHÉ-design/DECISOES.md`, D19). The palette follows the spirit of the kit: navy + blue, yellow `#FACC15` as the only warm color. The 1st edit (`2026-10-28-5-coisas`) uses the old format — purple palette, list hook, and bait with a deliverable — and stays as is because it has already been published.
 
 ## Paths and environment variables
 
 | Variable | What it’s for | Default |
 |---|---|---|
-| `RTEXJP_INEMAVOX` | inemavox folder (chatterbox TTS in `venv` + Whisper large-v3) | `~/projetos/inemavox` |
+| `RTEXJP_ARCKHÉVOX` | ARCKHÉvox folder (chatterbox TTS in `venv` + Whisper large-v3) | `~/projetos/ARCKHÉvox` |
 | `RTEXJP_VOZ_REF` | voice reference recording (`.wav`) | `~/projetos/timesmkt3/media/voice-refs/nei.wav` |
 | `RTEXJP_IMG_URL` | flux2-klein image server (`motor/gerar_avatar.py`, `motor/gerar_imagem.py`) | `http://localhost:8000/generate` |
-| `RTEXJP_AVATAR_REF` | avatar reference photo | `~/projetos/inema-referencias/nei-avatar.jpg` |
+| `RTEXJP_AVATAR_REF` | avatar reference photo | `~/projetos/ARCKHÉ-referencias/nei-avatar.jpg` |
 | `RTEXJP_AVATAR_DESC` | character traits and clothing in the image prompt (in English); change it together with the photo | black cap, glasses, gray beard, steel blue T-shirt (Nei) |
 | `RTEXJP_TRILHA` | mix music bed (for publishing, use music whose license you know) | `motor/assets/trilha.mp3` |
 | `CS_WHISPER_PY` | Python from the environment with faster-whisper (Whisper server and fallback) | `~/miniconda3/envs/chatterbox/bin/python3` |
-| `CHATTERBOX_PYTHON` | Python from the chatterbox environment, required by inemavox’s `tts_direct.py` | the one in the `chatterbox` environment |
+| `CHATTERBOX_PYTHON` | Python from the chatterbox environment, required by ARCKHÉvox’s `tts_direct.py` | the one in the `chatterbox` environment |
 
-Example: `RTEXJP_VOZ_REF=~/minha-voz.wav RTEXJP_INEMAVOX=~/inemavox python3 rtexjp.py voz edicoes/minha-edicao`.
+Example: `RTEXJP_VOZ_REF=~/minha-voz.wav RTEXJP_ARCKHÉVOX=~/ARCKHÉvox python3 rtexjp.py voz edicoes/minha-edicao`.
 
 ## Structure
 
@@ -66,7 +66,7 @@ motor/gerar_avatar.py  poses do avatar no flux2-klein local com a foto de refer�
 motor/capturar_prova.mjs print real da fonte para a prova (Playwright, tema escuro, 2x)
 motor/gerar_objeto.py  desenho-herói no flux2-klein local -> motor/assets/objetos/<nome>.png + indice.json
 motor/gerar_imagem.py  imagem de cena no flux2-klein local
-motor/whisper.py       Whisper large-v3 local (inemavox) com tempo por palavra
+motor/whisper.py       Whisper large-v3 local (ARCKHÉvox) com tempo por palavra
 motor/avatar/*.png     11 poses: bracos, queixo, apontando, segurando, surpreso, mostrando, explica, olha, polegar, duvida, susto
 motor/assets/objetos/  biblioteca de desenhos-herói (terminal_quebrado, mapa_pinos, lupa_arquivos, dominos, chave_dono…) + indice.json
 motor/assets/          trilha.mp3 (cama), grao.png (textura), carro.png
@@ -100,7 +100,7 @@ Shortcut: `python3 rtexjp.py tudo edicoes/<id>` runs 3 → 7 → 8 → 10 → 11
 
 ## Requirements
 
-- inemavox (chatterbox TTS in `venv`, Whisper large-v3) and the voice reference recording — `RTEXJP_INEMAVOX`, `RTEXJP_VOZ_REF`
+- ARCKHÉvox (chatterbox TTS in `venv`, Whisper large-v3) and the voice reference recording — `RTEXJP_ARCKHÉVOX`, `RTEXJP_VOZ_REF`
 - local flux2-klein image server and the avatar photo — `RTEXJP_IMG_URL`, `RTEXJP_AVATAR_REF`
 - Node + `npm i` (Playwright 1.64), ffmpeg, Python 3 with Pillow and numpy
 

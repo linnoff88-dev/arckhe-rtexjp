@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Produçêo do rtexjp sem sessêo aberta: monta, revisa e põe na fila do canal.
 
-Nei, 05/11/2026: "no inemaccbot pode ter /rtex /rtexjp /r7ex". O /rtexjp do bot escreve o roteiro (fase ficha) e
+Nei, 05/11/2026: "no ARCKHÉccbot pode ter /rtex /rtexjp /r7ex". O /rtexjp do bot escreve o roteiro (fase ficha) e
 entrega a ediçêo aqui. Tudo é local (voz chatterbox, Whisper, palco Playwright): nêo há HeyGen para esperar, mas a
 montagem leva minutos e divide a GPU, entêo quem anda é o timer `rtexjp-producao` (5 em 5 min, uma montagem por rodada),
 nêo o processo do bot. O agente (claude -p, assinatura) só entra para REVISAR a folha de contato.

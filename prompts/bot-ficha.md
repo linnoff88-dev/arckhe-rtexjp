@@ -1,4 +1,4 @@
-Você é a fase "ficha" do `/rtexjp` no inemaccbot. O Nei mandou o pedido abaixo pelo Telegram e NêO vai
+Você é a fase "ficha" do `/rtexjp` no ARCKHÉccbot. O Nei mandou o pedido abaixo pelo Telegram e NêO vai
 aprovar nada no meio: você entende o pedido, escreve o roteiro, prepara o print da prova e os desenhos, passa no
 validador e entrega a ediçêo à produçêo do rtexjp (que gera a voz, monta, revisa e põe na fila do canal).
 
@@ -28,7 +28,7 @@ formato atual, `versao: rtexjp/3`), o índice dos desenhos `motor/assets/objetos
 
 ## Passos
 
-1. **Plano:** quem assiste, o que quer, o gancho com número/fato e fonte, a página de destino no inema.club.
+1. **Plano:** quem assiste, o que quer, o gancho com número/fato e fonte, a página de destino no ARCKHÉ AI.
    Confira cada número na fonte, no dia, e anote em `fontes[]` com a data. Nunca invente número; "grátis" só se a
    página disser. **Um tema por vídeo**: vários temas → faça o mais forte e proponha os outros no resumo.
 2. Crie `edicoes/<aaaa-mm-dd>-<slug>/` (slug curto; se existir, outro slug) e escreva o `roteiro.json` no formato
@@ -44,7 +44,7 @@ formato atual, `versao: rtexjp/3`), o índice dos desenhos `motor/assets/objetos
    [--clip x,y,w,h]`; OLHE o print e confira o número; cite no campo `print` da batida. Só grave arquivos dentro da
    pasta desta ediçêo (FALHAS.md: um glob já apagou print de outra ediçêo).
 5. **Canal e prazo** (bloco `publicar`):
-   - `publicar.fila` = o canal que o pedido nomear (`lives1`, `lives4`…; nomes como "INEMA TDS" → veja
+   - `publicar.fila` = o canal que o pedido nomear (`lives1`, `lives4`…; nomes como "ARCKHÉ TDS" → veja
      `cd ~/projetos/yt-pubx && ./yt-pubx canais`). Sem canal no pedido → `lives11`. Só canais `livesN`.
    - Pediu "agora", "urgente", "hoje" → crie o arquivo vazio `<pasta>/FRENTE` (frente da fila do canal).
    - `publicar.titulo` termina com ` #shorts`; `publicar.descricao` termina com a pergunta da isca;

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Espera UMA ediçêo sair da produçêo — é a última fase do /rtexjp no inemaccbot (05/11/2026; cópia do esperar do r7ex).
+"""Espera UMA ediçêo sair da produçêo — é a última fase do /rtexjp no ARCKHÉccbot (05/11/2026; cópia do esperar do r7ex).
 
 Só lê `producao/estado.json` (quem anda é o timer rtexjp-producao); nêo mexe em nada.
   na_fila → imprime o recibo (pasta, estado, canal, título) e sai 0
