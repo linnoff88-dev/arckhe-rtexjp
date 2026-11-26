@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Teste da produção com edições falsas: sem render, sem Telegram, sem fila real. `python3 producao/teste_producao.py`"""
+"""Teste da produçêo com edições falsas: sem render, sem Telegram, sem fila real. `python3 producao/teste_producao.py`"""
 import json, sys, tempfile
 from pathlib import Path
 
@@ -27,7 +27,7 @@ def roda(cmd, timeout, saida=None, cwd=None):
         chamadas.append(("v3", Path(cmd[2]).parent.name)); return 0, "enviado"
     if "--add" in cmd:
         arq = cmd[cmd.index("--add") + 1]; chamadas.append(("fila", Path(arq).parent.name, cmd[cmd.index("--canal") + 1]))
-        P.FILA.write_text(P.FILA.read_text() + arq); return 0, f"na fila do {cmd[cmd.index('--canal') + 1]}: x (posição 1)"
+        P.FILA.write_text(P.FILA.read_text() + arq); return 0, f"na fila do {cmd[cmd.index('--canal') + 1]}: x (posiçêo 1)"
     raise AssertionError(cmd)
 
 
@@ -57,7 +57,7 @@ sem = edicao("sem-canal", canal=None)
 try:
     P.add(str(sem)); confere(False, "sem publicar.fila deveria recusar")
 except SystemExit:
-    confere(True, "sem publicar.fila não entra")
+    confere(True, "sem publicar.fila nêo entra")
 
 a, b = edicao("a"), edicao("b", "lives1")
 P.add(str(a)); P.add(str(b))
@@ -70,12 +70,12 @@ confere(any(m.startswith("Terminei: rtexjp a") for m in avisos), "aviso Terminei
 veredito["v"] = "reprovado"; P.rodada()
 confere(estado(b) == "parado" and any(m.startswith("Falhou: rtexjp b") for m in avisos), "b reprovado fica parado com aviso")
 n = len(chamadas); P.rodada()
-confere(len(chamadas) == n, "parado não anda sozinho")
+confere(len(chamadas) == n, "parado nêo anda sozinho")
 
 veredito["v"] = "aprovado"; veredito["s"] = ["3 s: manchete pequena"]
 P.retomar(str(b)); P.rodada()
 confere(estado(b) == "na_fila" and ("fila", "b", "lives1") in chamadas, "retomado, b vai à fila do lives1")
-confere(any(m.startswith("Terminei: rtexjp b") and "SUGESTÃO" in m for m in avisos), "sugestão vai na tarja e não para")
+confere(any(m.startswith("Terminei: rtexjp b") and "SUGESTêO" in m for m in avisos), "sugestêo vai na tarja e nêo para")
 veredito.pop("s")
 
 c = edicao("c"); falhar["c"] = "RuntimeError: CUDA error: out of memory"; P.add(str(c)); P.rodada()
@@ -86,7 +86,7 @@ falhar["c"] = "QA reprovou: trocas/min"; P.rodada()
 confere(estado(c) == "parado" and any("montagem/QA" in m for m in avisos), "QA reprovado para com aviso")
 
 x = edicao("x"); (x / "final.mp4").write_text("v"); P.FILA.write_text(P.FILA.read_text() + str(x / "final.mp4"))
-P.add(str(x)); confere(estado(x) == "na_fila", "edição já na fila entra como na_fila (não duplica)")
+P.add(str(x)); confere(estado(x) == "na_fila", "ediçêo já na fila entra como na_fila (nêo duplica)")
 try:
     P.add(str(a)); confere(False, "add repetido deveria recusar")
 except SystemExit:

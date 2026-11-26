@@ -25,7 +25,7 @@ POSES = {
     "segurando": "holding a closed blue folder against his chest with both hands, smiling",
     "surpreso": "both hands open near his face, surprised, eyebrows raised",
     "mostrando": "pointing down to the bottom of the frame with one hand, inviting, smiling",
-    # v1.2: poses ligadas à emoção do bloco
+    # v1.2: poses ligadas à emoçêo do bloco
     "explica": "one open palm raised to the side at shoulder height, explaining calmly, friendly smile",
     "olha": "looking up and to the side at something above him, one hand raised pointing at it, curious",
     "polegar": "big thumbs up with one hand, celebrating, wide happy smile",
@@ -57,7 +57,7 @@ def recortar(bruto, saida):
         if 0 <= y < h and 0 <= x < w and not fundo[y, x] and verde[y, x]:
             fundo[y, x] = True
             q.extend(((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)))
-    fundo |= (g > 90) & (g > r + 45) & (g > b + 45)   # verde preso entre mãos/braços (não ligado à borda)
+    fundo |= (g > 90) & (g > r + 45) & (g > b + 45)   # verde preso entre mêos/braços (nêo ligado à borda)
     alfa = Image.fromarray(np.where(fundo, 0, 255).astype("uint8")).filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(1.2))
     rgb = im.copy()
     borda = (g > r) & (g > b)  # tira o verde que vaza na borda

@@ -59,8 +59,8 @@ Example: `RTEXJP_VOZ_REF=~/minha-voz.wav RTEXJP_INEMAVOX=~/inemavox python3 rtex
 
 ```
 rtexjp.py              pipeline: checar · voz · cena · render · mix · qa · tudo
-medir.py               QA automático (duração, wpm, LUFS, trocas/min, isca, cartão final, silêncio, grep de fonte) + contact.jpg
-motor/palco.html       o palco: casca v1.2 (manchete, herói, avatar, legenda) desenhada por window.render(t) + window.medidas(t) (portão de beleza)
+medir.py               QA automático (duraçêo, wpm, LUFS, trocas/min, isca, cartêo final, silêncio, grep de fonte) + contact.jpg
+motor/palco.html       o palco: casca v1.2 (manchete, herói, avatar, legenda) desenhada por window.render(t) + window.medidas(t) (portêo de beleza)
 motor/render.mjs       Playwright quadro a quadro -> ffmpeg (30 fps)
 motor/gerar_avatar.py  poses do avatar no flux2-klein local com a foto de referência (fundo verde recortado)
 motor/capturar_prova.mjs print real da fonte para a prova (Playwright, tema escuro, 2x)

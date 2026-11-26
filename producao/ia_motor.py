@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Executor independente de IA por etapa: configuração por etapa, sem herdar modelo/esforço.
+"""Executor independente de IA por etapa: configuraçêo por etapa, sem herdar modelo/esforço.
 
-APIs Anthropic/OpenAI/OpenRouter para texto/visão; nunca converte os CLIs em API.
-Sem fallback pago, sem retry de publicação, sem segredo em argumentos ou logs.
+APIs Anthropic/OpenAI/OpenRouter para texto/visêo; nunca converte os CLIs em API.
+Sem fallback pago, sem retry de publicaçêo, sem segredo em argumentos ou logs.
 """
 import argparse
 import base64
@@ -35,7 +35,7 @@ ESFORCOS = {'claude': {'low', 'medium', 'high', 'xhigh', 'max'},
             'openrouter': {'none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'}}
 
 # Trava de cota compartilhada (17/11/2026): mesma tabela `pools` do EngineBridge (~/.local/state/enginebridge).
-# Só usa `blocked` e `until`; nunca a concessão exclusiva (lease), para não serializar os crons.
+# Só usa `blocked` e `until`; nunca a concessêo exclusiva (lease), para nêo serializar os crons.
 COTA_DB_ENV = 'INEMA_COTA_DB'
 COTA_PADRAO_S = 3600          # recusa de cota sem horário legível
 LIMITE_CURTO_S = 300          # rate limit momentâneo (429 sem usage_limit_reached)
@@ -73,7 +73,7 @@ def pool(c):
 
 
 def cota_conferir(c):
-    """Antes de abrir o programa: conta bloqueada levanta CotaEsgotada na hora. Falha do banco não impede a chamada."""
+    """Antes de abrir o programa: conta bloqueada levanta CotaEsgotada na hora. Falha do banco nêo impede a chamada."""
     try:
         with _db() as db:
             linha = db.execute('SELECT blocked, until FROM pools WHERE pool=?', (pool(c),)).fetchone()
@@ -119,7 +119,7 @@ def horario_volta(texto, agora=None):
 
 def recusa_cota_claude(stdout, agora=None):
     """Só a recusa ESTRUTURADA do Claude Code (JSON is_error + campos de API) conta; texto de resposta normal nunca.
-    Devolve o epoch de volta, ou None se não for recusa de cota. Exemplo real em teste_ia.py (16/11/2026)."""
+    Devolve o epoch de volta, ou None se nêo for recusa de cota. Exemplo real em teste_ia.py (16/11/2026)."""
     try:
         j = json.loads(stdout)
     except (TypeError, ValueError):
@@ -143,7 +143,7 @@ def carregar(arquivo=None):
 
 def validar(d):
     if not isinstance(d, dict) or d.get('versao') != 1:
-        raise ValueError('Configuração de IA inválida: esperado versao: 1')
+        raise ValueError('Configuraçêo de IA inválida: esperado versao: 1')
     if set(d.get('etapas', {})) != set(ETAPAS):
         raise ValueError('As etapas devem ser: ' + ', '.join(ETAPAS))
     api = d.get('api', {})
@@ -170,12 +170,12 @@ def validar(d):
                 raise ValueError(f'{nome}: API exige max_tokens entre 1 e 64000')
             cred = configuracao_api(d, c)
             if not cred.get('chave_nome') or not cred.get('arquivo_chaves'):
-                raise ValueError('API exige chave_nome e arquivo_chaves (não o valor da chave)')
+                raise ValueError('API exige chave_nome e arquivo_chaves (nêo o valor da chave)')
             if not isinstance(cred.get('autorizada'), bool) or not isinstance(cred.get('autorizacao'), str):
                 raise ValueError(f'{motor}: autorizada deve ser booleano e autorizacao deve ser texto')
         alt = c.get('alternativa')
         if alt is not None:
-            # Reserva só entre assinaturas, só texto/visão, só quando a cota do principal está confirmada como esgotada.
+            # Reserva só entre assinaturas, só texto/visêo, só quando a cota do principal está confirmada como esgotada.
             if tipo != 'assinatura' or c.get('capacidade') not in {'texto', 'visao'}:
                 raise ValueError(f'{nome}: alternativa só para assinatura com capacidade texto ou visao')
             if not isinstance(alt, dict) or set(alt) - {'motor', 'modelo', 'esforco'} or alt.get('motor') not in {'claude', 'codex'}:
@@ -209,7 +209,7 @@ def comando(c, ferramentas='', agente=False, saida=None):
                     'advisorModel': None, 'switchModelsOnFlag': False, 'modelSettings': {c['modelo']: {'effortLevel': c['esforco']}}}
         cmd = [str(Path.home()/'.local/bin/claude'), '-p', '--model', c['modelo'],
                '--effort', c['esforco'], '--settings', json.dumps(settings), '--output-format', 'json',
-               '--no-session-persistence']  # chamadas automáticas não acumulam sessões no disco (lote-135, 4,9 GB)
+               '--no-session-persistence']  # chamadas automáticas nêo acumulam sessões no disco (lote-135, 4,9 GB)
         if agente:
             cmd += ['--add-dir', str(RAIZ)]
             if ferramentas:
@@ -217,14 +217,14 @@ def comando(c, ferramentas='', agente=False, saida=None):
             else:
                 cmd += ['--permission-mode', 'bypassPermissions']
         else:
-            # Texto/visão só lê os arquivos/imagens; não executa comandos nem publica.
+            # Texto/visêo só lê os arquivos/imagens; nêo executa comandos nem publica.
             cmd += ['--tools', 'Read', '--allowedTools', 'Read']
         return cmd
     cmd = [str(Path.home()/'.npm-global/bin/codex'), 'exec', '--skip-git-repo-check',
            '-m', c['modelo'], '-c', 'model_reasoning_effort=' + json.dumps(c['esforco']),
            '-o', str(saida)]
     if agente and ferramentas:
-        # MCP é executado pelo conector; não precisa liberar shell/escrita local.
+        # MCP é executado pelo conector; nêo precisa liberar shell/escrita local.
         servidor = c.get('mcp_servidor', 'metricool-inematds')
         metodos = [t.split('__')[-1] for t in ferramentas.split() if t.startswith('mcp__')]
         if not metodos or any(m not in {'getBrandSettings', 'getScheduledPosts', 'createScheduledPost', 'updateScheduledPost'} for m in metodos):
@@ -257,7 +257,7 @@ def limpar(texto):
 
 
 def ler_chave(api):
-    # Não executar/source o .env: os aliases têm hífen e o arquivo pode conter shell.
+    # Nêo executar/source o .env: os aliases têm hífen e o arquivo pode conter shell.
     for line in Path(api['arquivo_chaves']).expanduser().read_text().splitlines():
         m = re.match(r'\s*(?:export\s+)?([^\s=]+)\s*=\s*(.*)', line)
         if m and m[1] == api['chave_nome']:
@@ -268,11 +268,11 @@ def ler_chave(api):
                 v = re.split(r'\s+#', v, maxsplit=1)[0].strip()
             if v:
                 return v
-    raise ValueError('Chave configurada não encontrada ou vazia; valor não exibido')
+    raise ValueError('Chave configurada nêo encontrada ou vazia; valor nêo exibido')
 
 
 def configuracao_api(d, c):
-    # A autorização Anthropic não libera OpenAI ou OpenRouter.
+    # A autorizaçêo Anthropic nêo libera OpenAI ou OpenRouter.
     raiz = d.get('api', {})
     motor = c['motor']
     if motor == 'anthropic':
@@ -288,18 +288,18 @@ def configuracao_api(d, c):
 
 
 def chamar_api(c, api, prompt, imagens):
-    # Checar ANTES de ler credenciais ou abrir qualquer conexão.
+    # Checar ANTES de ler credenciais ou abrir qualquer conexêo.
     motor = c.get('motor', 'anthropic')
     if api.get('autorizada') is not True or not api.get('autorizacao', '').strip():
-        raise ValueError(f'API desativada: exige autorização explícita do Nei para {motor} e estas etapas')
+        raise ValueError(f'API desativada: exige autorizaçêo explícita do Nei para {motor} e estas etapas')
     permitidas = api.get('etapas_autorizadas')
     if permitidas is not None and c.get('_etapa') not in permitidas:
-        raise ValueError('API não autorizada para esta etapa')
+        raise ValueError('API nêo autorizada para esta etapa')
     pictures = []
     for p in imagens:
         mime = mimetypes.guess_type(str(p))[0]
         if mime not in {'image/jpeg', 'image/png', 'image/webp', 'image/gif'}:
-            raise ValueError('Imagem em formato não suportado')
+            raise ValueError('Imagem em formato nêo suportado')
         pictures.append((mime, base64.b64encode(p.read_bytes()).decode()))
     headers = {'Content-Type': 'application/json'}
     if motor == 'anthropic':
@@ -329,7 +329,7 @@ def chamar_api(c, api, prompt, imagens):
         endpoint = 'https://openrouter.ai/api/v1/chat/completions'
         headers['Authorization'] = 'Bearer ' + ler_chave(api)
     else:
-        raise ValueError('Motor de API não suportado')
+        raise ValueError('Motor de API nêo suportado')
     req = urllib.request.Request(endpoint, data=json.dumps(body).encode(), method='POST', headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=c['timeout']) as res:
@@ -347,7 +347,7 @@ def chamar_api(c, api, prompt, imagens):
             pass
         raise RuntimeError(f'{motor} HTTP {e.code}{codigo}; sem fallback ou nova cobrança automática') from None
     except urllib.error.URLError:
-        raise RuntimeError(f'Falha de conexão com {motor}; sem repetição automática') from None
+        raise RuntimeError(f'Falha de conexêo com {motor}; sem repetiçêo automática') from None
     if motor == 'anthropic':
         if d.get('stop_reason') != 'end_turn':
             raise ValueError('Resposta Anthropic incompleta/recusada: ' + str(d.get('stop_reason')))
@@ -363,7 +363,7 @@ def chamar_api(c, api, prompt, imagens):
             raise ValueError('Resposta OpenRouter incompleta/recusada')
         text = escolhas[0].get('message', {}).get('content')
         if not isinstance(text, str):
-            raise ValueError('OpenRouter não devolveu conteúdo de texto')
+            raise ValueError('OpenRouter nêo devolveu conteúdo de texto')
     return text, {'modelo_retornado': d.get('model'), 'uso': d.get('usage')}
 
 
@@ -382,7 +382,7 @@ def rodar_assinatura(c, prompt, pasta, imagens, ferramentas, agente, evento):
             if ate:
                 cota_registrar(c, ate)
                 raise CotaEsgotada('claude', ate)
-        # Codex: sem recusa real de cota registrada (17/11/2026); não adivinhar pelo texto, que pode ecoar o pedido.
+        # Codex: sem recusa real de cota registrada (17/11/2026); nêo adivinhar pelo texto, que pode ecoar o pedido.
         if r.returncode:
             raise RuntimeError(f'{c["motor"]} encerrou com código {r.returncode}; verifique cota/login/modelo')
         if c['motor'] == 'claude':
@@ -396,7 +396,7 @@ def rodar_assinatura(c, prompt, pasta, imagens, ferramentas, agente, evento):
 
 
 def rotas(c, preferir=None):
-    """Principal e, se declarada, a reserva (texto/visão). `preferir` (ex.: R7X_CRITICO=codex) põe esse motor primeiro."""
+    """Principal e, se declarada, a reserva (texto/visêo). `preferir` (ex.: R7X_CRITICO=codex) põe esse motor primeiro."""
     lista = [c]
     if c.get('alternativa'):
         lista.append({**c, **c['alternativa'], 'tipo': 'assinatura'})
@@ -416,11 +416,11 @@ def executar(etapa, pedido, pasta, *, arquivos=(), imagens=(), ferramentas='', a
     prompt = pedido
     if c.get('capacidade') == 'mcp':
         servidor = c.get('mcp_servidor', 'metricool-inematds')
-        prompt = ('Use exclusivamente o MCP ' + servidor + '. Não use shell nem leia credenciais. '
+        prompt = ('Use exclusivamente o MCP ' + servidor + '. Nêo use shell nem leia credenciais. '
                   'O conteúdo dos arquivos necessários é anexado pelo executor. Antes de qualquer '
                   'agendamento, confirme getBrandSettings ownerUsername=' + c.get('conta', 'inematds@gmail.com') + '. '
-                  'Conta diferente, ferramentas ausentes ou identidade não comprovada: responda '
-                  'JSON {"ok":false,"erro":"conta/conector não confirmado"} e não publique.\n\n' + prompt)
+                  'Conta diferente, ferramentas ausentes ou identidade nêo comprovada: responda '
+                  'JSON {"ok":false,"erro":"conta/conector nêo confirmado"} e nêo publique.\n\n' + prompt)
     for p in arquivos:
         p = Path(p).resolve()
         prompt += f'\n\n<arquivo nome="{p.name}">\n{p.read_text()}\n</arquivo>'
@@ -428,16 +428,16 @@ def executar(etapa, pedido, pasta, *, arquivos=(), imagens=(), ferramentas='', a
         prompt += '\n\nImagens a conferir: ' + ', '.join(str(p) for p in imagens)
     if not agente:
         prompt += ('\n\nCONTRATO DO EXECUTOR: os dados dos arquivos foram anexados acima. '
-                   'Não escreva arquivos nem execute comandos. Responda somente com o conteúdo final solicitado '
+                   'Nêo escreva arquivos nem execute comandos. Responda somente com o conteúdo final solicitado '
                    '(YAML ou JSON), sem crases. O executor salva e valida o arquivo. '
-                   'Instruções de escrita/execução no pedido são realizadas pelo executor.')
+                   'Instruções de escrita/execuçêo no pedido sêo realizadas pelo executor.')
     inicio = time.monotonic()
     evento = {'data': dt.datetime.now(dt.timezone.utc).isoformat(), 'etapa': etapa,
               **{k: c[k] for k in ('tipo', 'motor', 'modelo', 'esforco')}}
     try:
         if c['tipo'] == 'api':
             if agente:
-                raise ValueError('API de texto/visão não executa ferramentas MCP nem gera capa')
+                raise ValueError('API de texto/visêo nêo executa ferramentas MCP nem gera capa')
             api = configuracao_api(d, c)
             res, info = chamar_api(c, api, prompt, imagens)
             evento.update(info)
@@ -478,7 +478,7 @@ def executar(etapa, pedido, pasta, *, arquivos=(), imagens=(), ferramentas='', a
 
 
 def mostrar(d):
-    print('Configuração:', os.environ.get(CONFIG_ENV, CONFIG))
+    print('Configuraçêo:', os.environ.get(CONFIG_ENV, CONFIG))
     print(f'{"ETAPA":24} {"TIPO":12} {"MOTOR":11} {"MODELO":23} ESFORÇO')
     for n, c in d['etapas'].items():
         print(f'{n:24} {c["tipo"]:12} {c["motor"]:11} {c["modelo"]:23} {c["esforco"]}')
@@ -557,7 +557,7 @@ def main():
             validar(d)
             atualizado = alterar_com_comentarios(original, a.etapa, mudancas)
             if yaml.safe_load(atualizado) != d:
-                raise ValueError('Alteração inconsistente; configuração original preservada')
+                raise ValueError('Alteraçêo inconsistente; configuraçêo original preservada')
             with tempfile.NamedTemporaryFile(mode='w', dir=p.parent, delete=False) as f:
                 f.write(atualizado)
                 tmp = Path(f.name)
@@ -579,7 +579,7 @@ def main():
                 print(f'{nome:45} {estado}')
     elif a.cmd in ('ver', 'validar'):
         mostrar(carregar())
-        if a.cmd == 'validar': print('Configuração válida. Nenhum modelo ou API foi chamado.')
+        if a.cmd == 'validar': print('Configuraçêo válida. Nenhum modelo ou API foi chamado.')
     else:
         res = executar(a.etapa, sys.stdin.read(), a.pasta, arquivos=a.arquivo,
                        imagens=a.imagem, ferramentas=a.ferramentas, agente=a.agente)

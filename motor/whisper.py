@@ -1,4 +1,4 @@
-"""Transcrição local com tempo por palavra (Whisper large-v3 do inemavox) e comparação de fala.
+"""Transcriçêo local com tempo por palavra (Whisper large-v3 do inemavox) e comparaçêo de fala.
 CÓPIA de ~/projetos/r7ex/r7ex/whisper.py (28/10/2026) para o rtexjp funcionar sozinho."""
 import json, os, re, subprocess, time, unicodedata, urllib.request
 from pathlib import Path
@@ -23,11 +23,11 @@ _EQUIV = {"duzentas": "duzentos", "trezentas": "trezentos", "quatrocentas": "qua
 _UN = "zero um dois tres quatro cinco seis sete oito nove dez onze doze treze quatorze quinze dezesseis dezessete dezoito dezenove".split()
 _DZ = "_ _ vinte trinta quarenta cinquenta sessenta setenta oitenta noventa".split()
 _CT = "_ cento duzentos trezentos quatrocentos quinhentos seiscentos setecentos oitocentos novecentos".split()
-# feminino e variantes que o texto escrito usa e o Whisper não (ou vice-versa)
+# feminino e variantes que o texto escrito usa e o Whisper nêo (ou vice-versa)
 
 
 def extenso(n):
-    """Inteiro por extenso em português (até bilhões), só para comparar fala com transcrição."""
+    """Inteiro por extenso em português (até bilhões), só para comparar fala com transcriçêo."""
     if n < 20:
         return _UN[n]
     if n < 100:
@@ -62,7 +62,7 @@ WHISPER_PORTA = int(os.environ.get("CS_WHISPER_PORTA", "7871"))
 
 
 def _whisper_residente(w16, palavras):
-    """Whisper que carrega o modelo UMA vez (inemavox/whisper_daemon.py, 15/10/2026): sobe o daemon se não
+    """Whisper que carrega o modelo UMA vez (inemavox/whisper_daemon.py, 15/10/2026): sobe o daemon se nêo
     estiver no ar e transcreve por ele. Devolve os segmentos, ou None para cair no caminho antigo."""
     if os.environ.get("CS_WHISPER_RESIDENTE", "1") == "0":
         return None
@@ -98,7 +98,7 @@ def _whisper_residente(w16, palavras):
 
 
 def transcrever(wav, pasta, palavras=False):
-    """Transcrição local (Whisper large-v3 pelo inemavox). Devolve a lista de palavras ou segmentos."""
+    """Transcriçêo local (Whisper large-v3 pelo inemavox). Devolve a lista de palavras ou segmentos."""
     pasta.mkdir(parents=True, exist_ok=True)
     w16 = pasta / "a16.wav"
     sh("ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-ar", "16000", "-ac", "1", w16)

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """QA automático do rtexjp. Uso: python3 medir.py <pasta-da-edicao>
-Mede no final.mp4: duração, wpm (fala e relógio), LUFS, trocas visuais/min (|Δluminância| médio ≥ 10 entre quadros a 1 fps,
-108x192), isca (opinião: opções no CTA + plantadas antes, CTA sem promessa; legado: palavra), prova até 20 s, cartão final, silêncio antes da máxima, nada abaixo de 80% na tela (amostra),
+Mede no final.mp4: duraçêo, wpm (fala e relógio), LUFS, trocas visuais/min (|Δluminância| médio ≥ 10 entre quadros a 1 fps,
+108x192), isca (opiniêo: opções no CTA + plantadas antes, CTA sem promessa; legado: palavra), prova até 20 s, cartêo final, silêncio antes da máxima, nada abaixo de 80% na tela (amostra),
 grep de fonte proibida = 0. Grava build/qa.json + qa.md + contact.jpg."""
 import json, re, subprocess, sys
 from pathlib import Path
 import numpy as np
 
 R = Path(__file__).resolve().parent
-# padrão montado em partes para o próprio arquivo não casar com ele
+# padrêo montado em partes para o próprio arquivo nêo casar com ele
 PROIBIDO = "|".join(["jp ?la" + "bs", "thejp" + "labs", "lobo fr" + "anco", "insta" + r"gram\.com/(reel|p)/", "rtex-an" + "alise"])
 
 
@@ -22,7 +22,7 @@ def main(pasta):
     rot = json.loads((pasta / "roteiro.json").read_text())
     cena = json.loads((pasta / "build/cena.json").read_text())
     q = {}
-    # duração e formato
+    # duraçêo e formato
     pr = json.loads(run("ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height,codec_type,r_frame_rate", "-of", "json", mp4).stdout)
     v = next(s for s in pr["streams"] if s["codec_type"] == "video")
     q["duracao_s"] = round(float(pr["format"]["duration"]), 2)
@@ -48,14 +48,14 @@ def main(pasta):
     q["trocas_min_10"] = round(int((d >= 10).sum()) / mins, 1)
     q["trocas_min_20"] = round(int((d >= 20).sum()) / mins, 1)
     q["trocas_min_6"] = round(int((d >= 6).sum()) / mins, 1)
-    # isca: opinião (pergunta + opções) ou legado (palavra + entregável)
+    # isca: opiniêo (pergunta + opções) ou legado (palavra + entregável)
     isca = rot["isca"]
     opiniao = isca.get("tipo") == "opiniao"
     quentes = isca["opcoes"] if opiniao else [isca["palavra"]]
     cta = cena["blocos"][-1]
     txt = lambda b: (b["fala"] + json.dumps(b.get("tela", {}), ensure_ascii=False)).lower()
     plant = next((b for b in cena["blocos"][:-1] if any(w.lower() in txt(b) for w in quentes)), None)
-    q["isca"] = ("opinião: " + isca.get("pergunta", "") + " " + "/".join(quentes)) if opiniao else isca["palavra"] + " (legado)"
+    q["isca"] = ("opiniêo: " + isca.get("pergunta", "") + " " + "/".join(quentes)) if opiniao else isca["palavra"] + " (legado)"
     q["isca_no_cta"] = all(w.lower() in cta["fala"].lower() for w in quentes)
     q["isca_plantada_s_antes_do_cta"] = round(cta["fala_ini"] - plant["fala_ini"], 1) if plant else None
     if opiniao:
@@ -88,7 +88,7 @@ def main(pasta):
         "trocas/min ≥ 17 (Δ≥10)": q["trocas_min_10"] >= 17,
         "isca no CTA e plantada antes": q["isca_no_cta"] and bool(q["isca_plantada_s_antes_do_cta"]) and q["isca_plantada_s_antes_do_cta"] >= 10,
         "prova até 20 s": q["prova_em_s"] is not None and q["prova_em_s"] <= 20,
-        "cartão final ≥ 8 s": q["cartao_final_s"] >= 8,
+        "cartêo final ≥ 8 s": q["cartao_final_s"] >= 8,
         "silêncio 0,5–0,9 s antes da máxima": 0.45 <= q["silencio_antes_maxima_s"] <= 1.0,
         "grep de fonte = 0": q["grep_fonte"] == 0,
     }
@@ -114,7 +114,7 @@ LIM = {"manchete_px": 96, "texto_px": 30, "area": 0.55, "contraste": 4.5, "avata
 
 
 def beleza(pasta, cena, q):
-    """Portão de beleza (visual v1.2): amostra ini+0,6 s e o meio de cada bloco no palco e lê do DOM
+    """Portêo de beleza (visual v1.2): amostra ini+0,6 s e o meio de cada bloco no palco e lê do DOM
     letra mínima, área ocupada no quadro útil (0–80 %), contraste WCAG do texto e altura do avatar."""
     ts = sorted({round(min(b["ini"] + 0.6, b["fim"] - 0.05), 2) for b in cena["blocos"]} |
                 {round((b["ini"] + b["fim"]) / 2, 2) for b in cena["blocos"]})

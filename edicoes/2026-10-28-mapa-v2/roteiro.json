@@ -4,7 +4,7 @@
  "titulo": "O Claude sumiu. Você saberia mexer no teu sistema?",
  "gancho": {
   "tipo": "perda",
-  "objeto": "terminal do Claude Code rachado em vermelho, carimbo FORA DO AR e arquivos soltos com interrogação; o avatar leva as mãos ao rosto"
+  "objeto": "terminal do Claude Code rachado em vermelho, carimbo FORA DO AR e arquivos soltos com interrogaçêo; o avatar leva as mêos ao rosto"
  },
  "isca": {
   "tipo": "opiniao",
@@ -28,8 +28,8 @@
    "id": "tese",
    "tipo": "tese",
    "rotulo": null,
-   "fala": "Se o Claude Code sumisse amanhã, você saberia mexer no sistema que ele montou pra você?",
-   "fala_tts": "Se o Clód Côud sumisse amanhã, você saberia mexer no sistema que ele montou pra você?",
+   "fala": "Se o Claude Code sumisse amanhê, você saberia mexer no sistema que ele montou pra você?",
+   "fala_tts": "Se o Clód Côud sumisse amanhê, você saberia mexer no sistema que ele montou pra você?",
    "tela": {
     "texto": "O CLAUDE SUMIU. E AGORA?",
     "destaque": "SUMIU"
@@ -137,7 +137,7 @@
    "id": "planta",
    "tipo": "tese",
    "rotulo": "00 / O PROBLEMA",
-   "fala": "E não é culpa sua: ninguém te deu o mapa. Sem mapa, você não é dono do teu sistema. É refém dele.",
+   "fala": "E nêo é culpa sua: ninguém te deu o mapa. Sem mapa, você nêo é dono do teu sistema. É refém dele.",
    "tela": {
     "texto": "SEM MAPA: DONO OU REFÉM?",
     "destaque": "REFÉM"
@@ -148,7 +148,7 @@
      "beats": [
       {
        "manchete": [
-        "NÃO É",
+        "NêO É",
         "CULPA SUA."
        ],
        "destaque": "CULPA SUA.",
@@ -169,9 +169,9 @@
        "em": "sem",
        "manchete": [
         "SEM MAPA,",
-        "NÃO É DONO."
+        "NêO É DONO."
        ],
-       "destaque": "NÃO É DONO.",
+       "destaque": "NêO É DONO.",
        "objeto": "cadeado_refem",
        "pose": "queixo"
       },
@@ -221,7 +221,7 @@
        "destaque": "3 COISAS",
        "itens": [
         "O MAPA",
-        "A EXPLICAÇÃO",
+        "A EXPLICAÇêO",
         "O IMPACTO"
        ],
        "pose": "apontando"
@@ -289,7 +289,7 @@
    "id": "p2",
    "tipo": "metodo",
    "n": 2,
-   "rotulo": "02 / A EXPLICAÇÃO",
+   "rotulo": "02 / A EXPLICAÇêO",
    "fala": "Dois. Você clica num ponto. Ele explica, em palavras simples, o que aquele arquivo faz e com quem fala.",
    "cena": {
     "comp": "quadro",
@@ -402,8 +402,8 @@
    "id": "ressalva",
    "tipo": "ressalva",
    "rotulo": "04 / A PARTE HONESTA",
-   "fala": "A parte honesta: a primeira leitura gasta muito token em projeto grande. A explicação sai em inglês. Então começa por uma pasta só.",
-   "fala_tts": "A parte honesta: a primeira leitura gasta muito tôken em projeto grande. A explicação sai em inglês. Então começa por uma pasta só.",
+   "fala": "A parte honesta: a primeira leitura gasta muito token em projeto grande. A explicaçêo sai em inglês. Entêo começa por uma pasta só.",
+   "fala_tts": "A parte honesta: a primeira leitura gasta muito tôken em projeto grande. A explicaçêo sai em inglês. Entêo começa por uma pasta só.",
    "cena": {
     "comp": "quadro",
     "params": {
@@ -438,9 +438,9 @@
        "pose": "queixo"
       },
       {
-       "em": "explicação",
+       "em": "explicaçêo",
        "manchete": [
-        "A EXPLICAÇÃO",
+        "A EXPLICAÇêO",
         "SAI EM INGLÊS"
        ],
        "destaque": "INGLÊS",
@@ -558,7 +558,7 @@
  ],
  "publicar": {
   "titulo": "O Claude sumiu. Você saberia mexer no teu sistema?",
-  "descricao": "Se o Claude Code sumisse amanhã, você saberia mexer no sistema que ele montou pra você? Não é culpa sua: ninguém te deu o mapa. O Understand Anything é um plugin grátis para o Claude Code que lê o projeto e desenha esse mapa: cada arquivo vira um ponto, você clica e ele explica o que aquele arquivo faz e com quem fala, e antes de confirmar uma mudança ele mostra tudo o que ela atinge. A parte honesta: a primeira leitura gasta muito token em projeto grande e a explicação sai em inglês; comece por uma pasta só. Ser dono do teu sistema nunca foi saber cada linha. É saber o que segura o quê. E você, hoje: dono ou refém do sistema que a IA montou?",
+  "descricao": "Se o Claude Code sumisse amanhê, você saberia mexer no sistema que ele montou pra você? Nêo é culpa sua: ninguém te deu o mapa. O Understand Anything é um plugin grátis para o Claude Code que lê o projeto e desenha esse mapa: cada arquivo vira um ponto, você clica e ele explica o que aquele arquivo faz e com quem fala, e antes de confirmar uma mudança ele mostra tudo o que ela atinge. A parte honesta: a primeira leitura gasta muito token em projeto grande e a explicaçêo sai em inglês; comece por uma pasta só. Ser dono do teu sistema nunca foi saber cada linha. É saber o que segura o quê. E você, hoje: dono ou refém do sistema que a IA montou?",
   "comentario_fixado": "Pra quem quiser olhar: github.com/Egonex-AI/Understand-Anything (88,8 mil estrelas no GitHub em 28/10/2026; fonte: a própria página do repositório). E você: DONO ou REFÉM?",
   "tags": [
    "claude code",

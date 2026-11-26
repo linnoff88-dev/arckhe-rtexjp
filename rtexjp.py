@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""rtexjp — motor de reels 9:16 no padrão rtexjp (reel ilustrado azul-marinho, isca de opinião).
+"""rtexjp — motor de reels 9:16 no padrêo rtexjp (reel ilustrado azul-marinho, isca de opiniêo).
 
 Uso:  python3 rtexjp.py <passo> <pasta-da-edicao>
 Passos (em ordem):  checar · voz · cena · render · mix · qa · tudo
@@ -11,9 +11,9 @@ Passos (em ordem):  checar · voz · cena · render · mix · qa · tudo
   mix     voz + cama musical (para no silêncio da máxima) + loudnorm -14 LUFS -> final.mp4
   qa      medir.py -> build/qa.json + contact.jpg
 
-Caminhos (variáveis de ambiente, com o padrão da máquina do Nei):
+Caminhos (variáveis de ambiente, com o padrêo da máquina do Nei):
   RTEXJP_INEMAVOX  pasta do inemavox (TTS chatterbox + Whisper)   ~/projetos/inemavox
-  RTEXJP_VOZ_REF   gravação de referência da voz (wav)            ~/projetos/timesmkt3/media/voice-refs/nei.wav
+  RTEXJP_VOZ_REF   gravaçêo de referência da voz (wav)            ~/projetos/timesmkt3/media/voice-refs/nei.wav
   RTEXJP_IMG_URL   servidor de imagem flux2-klein (motor/gerar_*) http://localhost:8000/generate
   RTEXJP_AVATAR_REF foto de referência do avatar (gerar_avatar)    ~/projetos/inema-referencias/nei-avatar.jpg
   RTEXJP_AVATAR_DESC traços e roupa do personagem no prompt (gerar_avatar)   boné preto, óculos, barba grisalha, camiseta azul-aço
@@ -32,11 +32,11 @@ ALVO_WPM = 178
 RESPIRO = 0.22
 
 ORDEM = ["tese", "autoridade", "tese", "virada", "metodo", "ressalva", "maxima", "cta"]
-# gancho do quadro 0 (Nei, 28/10/2026): um destes tipos; lista, "você sabia" e "eu fiz" são proibidos
+# gancho do quadro 0 (Nei, 28/10/2026): um destes tipos; lista, "você sabia" e "eu fiz" sêo proibidos
 GANCHOS = ["contrario", "perda", "estatistica", "historia"]
 GANCHO_PROIBIDO = [(r"\b(\d+|duas|três|tres|quatro|cinco|seis|sete|oito|nove|dez)\s+(coisas|peças|pecas|dicas|ferramentas|jeitos|formas)\b", "lista"),
                    (r"voc[êe] sabia", "você sabia"), (r"\beu fiz\b", "eu fiz")]
-# isca de opinião: o CTA pede opinião, nunca promete entrega (Nei não responde comentários)
+# isca de opiniêo: o CTA pede opiniêo, nunca promete entrega (Nei nêo responde comentários)
 PROMESSA = [r"te mando", r"eu mando", r"\bmando\b", r"eu envio", r"te envio", r"manda o link", r"comenta \w+ que", r"link na dm", r"\bdm\b"]
 
 
@@ -70,17 +70,17 @@ def _checar_visual(r, pasta, erros, avisos):
             erros.append(f"[{b['id']}] sem beats (manchete/objeto/pose por batida)")
         for p in [b.get("pose")] + [x.get("pose") for x in bts] + [b.get("pose_silencio")]:
             if p and p not in poses:
-                erros.append(f"[{b['id']}] pose '{p}' não existe em motor/avatar ({', '.join(sorted(poses))})")
+                erros.append(f"[{b['id']}] pose '{p}' nêo existe em motor/avatar ({', '.join(sorted(poses))})")
         if not b.get("pose") and not any(x.get("pose") for x in bts):
-            erros.append(f"[{b['id']}] sem pose (o avatar reage à emoção do bloco)")
+            erros.append(f"[{b['id']}] sem pose (o avatar reage à emoçêo do bloco)")
         for x in bts:
             for o in ([x["objeto"]] if x.get("objeto") else []) + x.get("objetos", []):
                 if o not in objs:
-                    erros.append(f"[{b['id']}] objeto '{o}' não está na biblioteca (motor/gerar_objeto.py)")
+                    erros.append(f"[{b['id']}] objeto '{o}' nêo está na biblioteca (motor/gerar_objeto.py)")
             if x.get("print") and not (pasta / x["print"]).exists():
-                erros.append(f"[{b['id']}] print '{x['print']}' não existe na edição")
+                erros.append(f"[{b['id']}] print '{x['print']}' nêo existe na ediçêo")
             if x.get("em") and x["em"].lower() not in b["fala"].lower():
-                erros.append(f"[{b['id']}] batida em='{x['em']}' não está na fala")
+                erros.append(f"[{b['id']}] batida em='{x['em']}' nêo está na fala")
             m = x.get("manchete") or []
             if len(m) > 3:
                 erros.append(f"[{b['id']}] manchete com {len(m)} linhas (2–3)")
@@ -125,21 +125,21 @@ def checar(pasta):
         if re.search(r"\d", f):
             erros.append(f"[{b['id']}] algarismo na fala (escreva por extenso): {f}")
         if "!" in f:
-            erros.append(f"[{b['id']}] exclamação na fala")
+            erros.append(f"[{b['id']}] exclamaçêo na fala")
         for fr in re.split(r"[.?:]", f):
             if len(fr.split()) > 16:
                 avisos.append(f"[{b['id']}] frase longa ({len(fr.split())} palavras)")
         if b.get("fonte") and b["fonte"] not in {x["id"] for x in r["fontes"]}:
-            erros.append(f"[{b['id']}] fonte '{b['fonte']}' não existe em fontes[]")
+            erros.append(f"[{b['id']}] fonte '{b['fonte']}' nêo existe em fontes[]")
         for w in b.get("destaque_fala", []):
             if w.lower() not in f.lower():
-                erros.append(f"[{b['id']}] destaque '{w}' não está na fala")
+                erros.append(f"[{b['id']}] destaque '{w}' nêo está na fala")
         for k, w in b.get("cena", {}).get("params", {}).get("gatilhos", {}).items():
             if w.lower() not in f.lower():
-                erros.append(f"[{b['id']}] gatilho {k}='{w}' não está na fala")
+                erros.append(f"[{b['id']}] gatilho {k}='{w}' nêo está na fala")
     # números na tela só com fonte
     for b in bl:
-        p = " ".join(_textos(b.get("cena", {})) + _textos(b.get("tela", {})))   # só texto que vai à tela (não tamanhos/posições)
+        p = " ".join(_textos(b.get("cena", {})) + _textos(b.get("tela", {})))   # só texto que vai à tela (nêo tamanhos/posições)
         if re.search(r"\d{2,}", re.sub(r"\b0\d\b", "", p)) and not b.get("fonte") and b["tipo"] not in ("cta", "virada", "tese"):
             erros.append(f"[{b['id']}] número na tela sem fonte")
     # gancho (quadro 0 + 3 primeiros segundos)
@@ -147,7 +147,7 @@ def checar(pasta):
     tela0 = tese0.get("tela", {})
     g = r.get("gancho")
     if not g:
-        avisos.append("LEGADO: sem gancho.tipo (formato antigo; edição nova precisa de gancho)")
+        avisos.append("LEGADO: sem gancho.tipo (formato antigo; ediçêo nova precisa de gancho)")
     else:
         if g.get("tipo") not in GANCHOS:
             erros.append(f"gancho.tipo '{g.get('tipo')}' (use {', '.join(GANCHOS)})")
@@ -187,39 +187,39 @@ def checar(pasta):
             erros.append("isca.opcoes: 2–3 opções de UMA palavra em caixa alta")
         for o in ops:
             if o.lower() not in cta["fala"].lower():
-                erros.append(f"a opção {o} não está na fala do CTA")
+                erros.append(f"a opçêo {o} nêo está na fala do CTA")
         antes = [b for b in bl[:-1] if any(o.lower() in (b["fala"] + json.dumps(b.get("tela", {}), ensure_ascii=False)).lower() for o in ops)]
         if not antes:
-            erros.append("a tensão (opções) não foi plantada antes do CTA")
+            erros.append("a tensêo (opções) nêo foi plantada antes do CTA")
         elif bl.index(antes[0]) > 3:
             avisos.append("as opções aparecem tarde (plante nos primeiros blocos)")
         lado = isca.get("lado", "")
         fala_ate = " ".join(b["fala"] for b in bl[:-1]) + " " + cta["fala"].split("?")[0]
         if not lado:
-            erros.append("isca.lado: a posição do Nei, dita antes da pergunta")
+            erros.append("isca.lado: a posiçêo do Nei, dita antes da pergunta")
         elif lado.lower().rstrip(".") not in fala_ate.lower():
-            erros.append("o lado do Nei (isca.lado) não é dito antes da pergunta")
+            erros.append("o lado do Nei (isca.lado) nêo é dito antes da pergunta")
         if r.get("entregavel") or isca.get("entregavel"):
-            erros.append("isca de opinião não tem entregável (o Nei não responde comentários)")
+            erros.append("isca de opiniêo nêo tem entregável (o Nei nêo responde comentários)")
         if not tela0.get("texto", "").strip().endswith("?") and not (g and g.get("tipo") in ("contrario", "estatistica")):
-            avisos.append("a tensão do quadro 0 costuma ser pergunta (termine a manchete em ?)")
+            avisos.append("a tensêo do quadro 0 costuma ser pergunta (termine a manchete em ?)")
     else:
-        avisos.append("LEGADO: isca de palavra + entregável (formato antigo; edição nova usa isca de opinião)")
+        avisos.append("LEGADO: isca de palavra + entregável (formato antigo; ediçêo nova usa isca de opiniêo)")
         palavra = isca["palavra"]
         if palavra not in cta["fala"]:
-            erros.append("a palavra-isca não está na fala do CTA")
+            erros.append("a palavra-isca nêo está na fala do CTA")
         antes = [b for b in bl[:-1] if palavra.lower() in (b["fala"] + json.dumps(b.get("tela", {}))).lower()]
         if not antes:
-            erros.append("a palavra-isca não foi plantada antes do CTA")
+            erros.append("a palavra-isca nêo foi plantada antes do CTA")
     if isca.get("tipo") == "opiniao":
         for pat in PROMESSA:
             if re.search(pat, cta_txt, re.I):
-                erros.append(f"CTA promete entrega ('{pat}'): o pedido é de opinião, sem recompensa")
+                erros.append(f"CTA promete entrega ('{pat}'): o pedido é de opiniêo, sem recompensa")
     mx = bl[-2]
     if not 0.5 <= mx.get("silencio_antes_s", 0) <= 0.9:
         erros.append("a máxima precisa de 0,5–0,9 s de silêncio antes")
     if not 5 <= bl[-1].get("hold_s", 0) <= 9:
-        avisos.append("hold depois da fala do CTA: 5–9 s (cartão final inteiro fica ~8–10 s)")
+        avisos.append("hold depois da fala do CTA: 5–9 s (cartêo final inteiro fica ~8–10 s)")
     if str(r.get("versao", "")).endswith("/3"):
         _checar_visual(r, pasta, erros, avisos)
     pal = sum(len(b["fala"].split()) for b in bl)
@@ -308,7 +308,7 @@ def voz(pasta, so=None):
             for k in range(sz):
                 tempos[a + k] = (ws[bb + k]["start"], ws[bb + k]["end"])
         d = info["fim"] - info["ini"]
-        # interpola o que o Whisper não casou
+        # interpola o que o Whisper nêo casou
         idx = [k for k, x in enumerate(tempos) if x]
         for k in range(len(orig)):
             if tempos[k]:

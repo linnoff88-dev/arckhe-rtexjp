@@ -18,7 +18,7 @@
  "fontes": [
   {
    "id": "mofcom",
-   "valor": "pela 1ª vez, modelos grandes de IA na lista de exportação controlada",
+   "valor": "pela 1ª vez, modelos grandes de IA na lista de exportaçêo controlada",
    "linha": "Recode China AI · 21/10/2026 · sobre o rascunho de 16/10",
    "verificado_em": "2026-10-28"
   }
@@ -91,8 +91,8 @@
    "tipo": "autoridade",
    "rotulo": "00 / A REGRA",
    "fonte": "mofcom",
-   "fala": "Não é teoria. Em dezesseis de outubro, Pequim publicou um rascunho: pela primeira vez, modelo grande de IA entra na lista do que só sai do país com licença.",
-   "fala_tts": "Não é teoria. Em dezesseis de outubro, Pequim publicou um rascunho: pela primeira vez, modelo grande de i-á entra na lista do que só sai do país com licença.",
+   "fala": "Nêo é teoria. Em dezesseis de outubro, Pequim publicou um rascunho: pela primeira vez, modelo grande de IA entra na lista do que só sai do país com licença.",
+   "fala_tts": "Nêo é teoria. Em dezesseis de outubro, Pequim publicou um rascunho: pela primeira vez, modelo grande de i-á entra na lista do que só sai do país com licença.",
    "cena": {
     "comp": "quadro",
     "params": {
@@ -147,8 +147,8 @@
    "id": "problema",
    "tipo": "tese",
    "rotulo": "00 / O PROBLEMA",
-   "fala": "E não é culpa sua: a IA chinesa aberta virou o plano B de todo mundo. Se ela para de vir, sobra pagar caro ou rodar a sua.",
-   "fala_tts": "E não é culpa sua: a i-á chinesa aberta virou o plano B de todo mundo. Se ela para de vir, sobra pagar caro ou rodar a sua.",
+   "fala": "E nêo é culpa sua: a IA chinesa aberta virou o plano B de todo mundo. Se ela para de vir, sobra pagar caro ou rodar a sua.",
+   "fala_tts": "E nêo é culpa sua: a i-á chinesa aberta virou o plano B de todo mundo. Se ela para de vir, sobra pagar caro ou rodar a sua.",
    "tela": {
     "texto": "PAGO OU LOCAL?",
     "destaque": "LOCAL"
@@ -159,7 +159,7 @@
      "beats": [
       {
        "manchete": [
-        "NÃO É",
+        "NêO É",
         "CULPA SUA."
        ],
        "destaque": "CULPA SUA.",
@@ -359,8 +359,8 @@
    "tipo": "ressalva",
    "rotulo": "04 / A PARTE HONESTA",
    "fonte": "mofcom",
-   "fala": "A parte honesta: ainda é rascunho, com consulta até quinze de novembro, e a DeepSeek seguiu lançando modelo aberto. E modelo local ainda não iguala o topo.",
-   "fala_tts": "A parte honesta: ainda é rascunho, com consulta até quinze de novembro, e a Dip-síque seguiu lançando modelo aberto. E modelo local ainda não iguala o topo.",
+   "fala": "A parte honesta: ainda é rascunho, com consulta até quinze de novembro, e a DeepSeek seguiu lançando modelo aberto. E modelo local ainda nêo iguala o topo.",
+   "fala_tts": "A parte honesta: ainda é rascunho, com consulta até quinze de novembro, e a Dip-síque seguiu lançando modelo aberto. E modelo local ainda nêo iguala o topo.",
    "cena": {
     "comp": "quadro",
     "params": {
@@ -397,7 +397,7 @@
       {
        "em": "local",
        "manchete": [
-        "LOCAL NÃO",
+        "LOCAL NêO",
         "IGUALA O TOPO"
        ],
        "destaque": "TOPO",
@@ -515,8 +515,8 @@
  ],
  "publicar": {
   "titulo": "E se a China fechar a torneira da IA grátis?",
-  "descricao": "E se a China fechar a torneira da IA grátis? Em 16 de outubro de 2026, Pequim publicou um rascunho de controle de exportação (Ministério do Comércio e Ministério da Ciência): pela primeira vez, modelos grandes de inteligência artificial entram na lista do que só sai do país com licença, ou nem sai. A IA chinesa aberta virou o plano B de muita gente; se ela parar de vir, sobra pagar caro ou rodar a sua. Três passos: baixe hoje os modelos abertos que você usa (o que já foi publicado fica fora da regra), rode um deles na sua máquina e deixe o modelo caro só para o que é difícil de verdade. A parte honesta: ainda é rascunho, com consulta até 15 de novembro, a DeepSeek seguiu lançando modelo aberto, e modelo local ainda não iguala o topo. IA grátis nunca foi sua. Era emprestada. E você: paga ou roda local?",
-  "comentario_fixado": "Fonte: rascunho do Ministério do Comércio (MOFCOM) e do Ministério da Ciência e Tecnologia (MOST) da China, publicado em 16/10/2026, consulta pública até 15/11/2026. Ainda é proposta, não lei. E você: PAGO ou LOCAL?",
+  "descricao": "E se a China fechar a torneira da IA grátis? Em 16 de outubro de 2026, Pequim publicou um rascunho de controle de exportaçêo (Ministério do Comércio e Ministério da Ciência): pela primeira vez, modelos grandes de inteligência artificial entram na lista do que só sai do país com licença, ou nem sai. A IA chinesa aberta virou o plano B de muita gente; se ela parar de vir, sobra pagar caro ou rodar a sua. Três passos: baixe hoje os modelos abertos que você usa (o que já foi publicado fica fora da regra), rode um deles na sua máquina e deixe o modelo caro só para o que é difícil de verdade. A parte honesta: ainda é rascunho, com consulta até 15 de novembro, a DeepSeek seguiu lançando modelo aberto, e modelo local ainda nêo iguala o topo. IA grátis nunca foi sua. Era emprestada. E você: paga ou roda local?",
+  "comentario_fixado": "Fonte: rascunho do Ministério do Comércio (MOFCOM) e do Ministério da Ciência e Tecnologia (MOST) da China, publicado em 16/10/2026, consulta pública até 15/11/2026. Ainda é proposta, nêo lei. E você: PAGO ou LOCAL?",
   "tags": [
    "inteligência artificial",
    "china",

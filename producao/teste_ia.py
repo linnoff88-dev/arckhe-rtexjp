@@ -1,4 +1,4 @@
-"""Contratos de troca de motor e do portão visual, sem rede/publicação."""
+"""Contratos de troca de motor e do portêo visual, sem rede/publicaçêo."""
 import copy, json, os, subprocess, tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch

@@ -4,7 +4,7 @@
  "titulo": "5 coisas de IA deste mês que quase ninguém percebeu",
  "isca": {
   "palavra": "SETUP",
-  "entregavel": "os 5 links e os comandos de instalação, num guia no inema.club",
+  "entregavel": "os 5 links e os comandos de instalaçêo, num guia no inema.club",
   "destino": "inema.club/guia (PRECISA EXISTIR ANTES DE PUBLICAR)"
  },
  "fontes": [
@@ -85,16 +85,16 @@
    "id": "planta",
    "tipo": "tese",
    "rotulo": "00 / O MÊS",
-   "fala": "E as cinco dizem a mesma coisa: não é o modelo. É o setup.",
-   "fala_tts": "E as cinco dizem a mesma coisa: não é o modelo. É o setup.",
+   "fala": "E as cinco dizem a mesma coisa: nêo é o modelo. É o setup.",
+   "fala_tts": "E as cinco dizem a mesma coisa: nêo é o modelo. É o setup.",
    "tela": {
-    "texto": "NÃO É O MODELO. É O SETUP.",
+    "texto": "NêO É O MODELO. É O SETUP.",
     "destaque": "SETUP"
    },
    "cena": {
     "comp": "frase",
     "params": {
-     "l1": "NÃO É O MODELO.",
+     "l1": "NêO É O MODELO.",
      "l2": "É O SETUP.",
      "gatilho_l2": "é"
     }
@@ -259,7 +259,7 @@
    "n": 4,
    "rotulo": "04 / O MAPA",
    "fonte": "ua",
-   "fala": "Quatro. Se o Claude Code sumisse amanhã, você saberia mexer no teu sistema? O Understand Anything lê o projeto e desenha o mapa.",
+   "fala": "Quatro. Se o Claude Code sumisse amanhê, você saberia mexer no teu sistema? O Understand Anything lê o projeto e desenha o mapa.",
    "cena": {
     "comp": "mapa",
     "params": {
@@ -335,13 +335,13 @@
    "id": "ressalva",
    "tipo": "ressalva",
    "rotulo": "06 / A PARTE HONESTA",
-   "fala": "A parte honesta: o Roadster ainda não dá pra comprar. O mapa gasta muito token no começo. E quem decide é você.",
-   "fala_tts": "A parte honesta: o Roadster ainda não dá pra comprar. O mapa gasta muito tôken no começo. E quem decide é você.",
+   "fala": "A parte honesta: o Roadster ainda nêo dá pra comprar. O mapa gasta muito token no começo. E quem decide é você.",
+   "fala_tts": "A parte honesta: o Roadster ainda nêo dá pra comprar. O mapa gasta muito tôken no começo. E quem decide é você.",
    "cena": {
     "comp": "ressalva",
     "params": {
      "itens": [
-      "ROADSTER: SÓ NA DEMONSTRAÇÃO",
+      "ROADSTER: SÓ NA DEMONSTRAÇêO",
       "O MAPA GASTA TOKEN",
       "QUEM DECIDE É VOCÊ"
      ],
@@ -353,7 +353,7 @@
      "stingers": [
       {
        "em": "comprar",
-       "texto": "AINDA <b>NÃO.</b>"
+       "texto": "AINDA <b>NêO.</b>"
       }
      ]
     }

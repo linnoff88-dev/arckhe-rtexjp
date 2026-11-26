@@ -13,7 +13,7 @@
 | trocas_min_10 | 19.4 |
 | trocas_min_20 | 8.9 |
 | trocas_min_6 | 22.7 |
-| isca | opinião: Se o plano subir para cinco mil, você paga ou sai? PAGA/SAI |
+| isca | opiniêo: Se o plano subir para cinco mil, você paga ou sai? PAGA/SAI |
 | isca_no_cta | True |
 | isca_plantada_s_antes_do_cta | 59.7 |
 | cta_sem_promessa | True |
@@ -40,7 +40,7 @@
 | trocas/min ≥ 17 (Δ≥10) | ✅ |
 | isca no CTA e plantada antes | ✅ |
 | prova até 20 s | ✅ |
-| cartão final ≥ 8 s | ✅ |
+| cartêo final ≥ 8 s | ✅ |
 | silêncio 0,5–0,9 s antes da máxima | ✅ |
 | grep de fonte = 0 | ✅ |
 | CTA sem promessa de entrega | ✅ |

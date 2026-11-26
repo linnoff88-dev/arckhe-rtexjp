@@ -13,7 +13,7 @@
 | trocas_min_10 | 20.3 |
 | trocas_min_20 | 7.5 |
 | trocas_min_6 | 24.8 |
-| isca | opinião: Se a torneira fechar, você paga ou roda local? PAGO/LOCAL |
+| isca | opiniêo: Se a torneira fechar, você paga ou roda local? PAGO/LOCAL |
 | isca_no_cta | True |
 | isca_plantada_s_antes_do_cta | 47.7 |
 | cta_sem_promessa | True |
@@ -40,7 +40,7 @@
 | trocas/min ≥ 17 (Δ≥10) | ✅ |
 | isca no CTA e plantada antes | ✅ |
 | prova até 20 s | ✅ |
-| cartão final ≥ 8 s | ✅ |
+| cartêo final ≥ 8 s | ✅ |
 | silêncio 0,5–0,9 s antes da máxima | ✅ |
 | grep de fonte = 0 | ✅ |
 | CTA sem promessa de entrega | ✅ |

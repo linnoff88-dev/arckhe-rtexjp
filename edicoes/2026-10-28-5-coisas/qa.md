@@ -30,6 +30,6 @@
 | LUFS −14 ±1 | ✅ |
 | trocas/min ≥ 17 (Δ≥10) | ✅ |
 | isca no CTA e plantada antes | ✅ |
-| cartão final ≥ 8 s | ✅ |
+| cartêo final ≥ 8 s | ✅ |
 | silêncio 0,5–0,9 s antes da máxima | ✅ |
 | grep de fonte = 0 | ✅ |
